@@ -12,7 +12,7 @@ def createhero():
         print('You must enter a name.')
         time.sleep(2)
         createhero()
-    if len(name) < 2:
+    if len(name) < 3:
         print('Your name must be 3 characters or more in length')
         time.sleep(2)
         createhero()
@@ -21,6 +21,7 @@ def createhero():
     l.delay_print("\nAre you sure you want to start a new game with the name: "+ f'{l.ColorStyle.YELLOW}'+name+f'{l.ColorStyle.RESET}' +"?")
     ans = input("\n(Y/N) ")
     if ans == 'n' or ans == 'N':
+        l.menuValue = '0'
         return
     if ans == 'y' or ans == 'Y':
         con = sqlite3.connect('data.db')

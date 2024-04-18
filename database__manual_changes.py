@@ -4,6 +4,10 @@
 # cur = con.cursor()
 
 #             # Write to DB
-# cur.execute("update hero set id=1 where name = 'Krynnlord'")
+# result=cur.execute("select filename from music where id ='1'").fetchone()
+# temp = result[0]
+# print(temp)
 # con.commit()
 # con.close()
+
+

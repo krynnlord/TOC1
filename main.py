@@ -2,24 +2,32 @@
 # (C)opyright 2024 RLM Productions
 import functions.gameFunctions as l
 import functions.heroVariables as hero
-import time, os
+import time, os, sqlite3
 
-menuValue = '0'
-# l.titlescreen() # Load the Title Screen
-# menuValue=l.title_menu(menuValue) # Load the Title Menu
-l.createhero()
+#open database for Music Theme
+con = sqlite3.connect('data.db')
+cur = con.cursor()
+result=cur.execute("select filename from music where id ='1'").fetchone()
+musictrack = 'asset/'+ result[0]
+con.close()
+l.play_music(musictrack)
+
+while True:
+    l.titlescreen() # Load the Title Screen
+    menuValue=l.title_menu(l.menuValue) # Load the Title Menu
+# l.createhero() # Load Create Game
 
 # Code for New Game
-if menuValue == '1':
-    l.delay_print2('New Game selected...')
-    time.sleep(2)
-    l.createhero()
+    if menuValue == '1':
+        l.delay_print2('New Game selected...')
+        time.sleep(2)
+        l.createhero()
 
 # Code for Load Game
-if menuValue == '2':
-    l.delay_print2('Loading Game...')
-    time.sleep(2)
-    
+    if menuValue == '2':
+        l.delay_print2('Loading Game...')
+        time.sleep(2)
+        break
 
 
 
@@ -30,18 +38,20 @@ if menuValue == '2':
 
 
 # Game Info Dump
-if menuValue == '4':
-    l.delay_print2('Game Info...')
-    time.sleep(2)
-    os.system('cls')
-    print('\nGame: ' + l.GameInfo['GameTitle'] + ': ' + l.GameInfo['GameSubtitle'])
-    print('Version: ' + l.GameInfo['GameVersion'])
-    print('Copyright: ' + l.GameInfo['Copyright'])
-    print('Author: ' + l.GameInfo['Author'])
-
+    if menuValue == '4':
+        l.delay_print2('Game Info...')
+        time.sleep(2)
+        os.system('cls')
+        print(l.GameInfo['GameTitle'] + ': ' + l.GameInfo['GameSubtitle'])
+        print('Version: ' + l.GameInfo['GameVersion'])
+        print('Copyright: ' + l.GameInfo['Copyright'])
+        print('Author: ' + l.GameInfo['Author'])
+        break
 
 # Quit the Game
-if menuValue == '3':
-    l.delay_print2('Goodbye!')
-    time.sleep(2)
-    exit(0)
+    if menuValue == '3':
+        l.delay_print2('Goodbye!')
+        time.sleep(2)
+        break
+
+exit(0)
