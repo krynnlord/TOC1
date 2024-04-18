@@ -7,10 +7,12 @@ import time, os, sqlite3
 #open database for Music Theme
 con = sqlite3.connect('data.db')
 cur = con.cursor()
-result=cur.execute("select filename from music where id ='1'").fetchone()
+result=cur.execute("select filename from music where id ='2'").fetchone()
 musictrack = 'asset/'+ result[0]
 con.close()
 l.play_music(musictrack)
+os.system('cls')
+time.sleep(2.2) # for Dramatic Musical Intro
 
 while True:
     l.titlescreen() # Load the Title Screen
@@ -50,8 +52,9 @@ while True:
 
 # Quit the Game
     if menuValue == '3':
-        l.delay_print2('Goodbye!')
-        time.sleep(2)
+        l.delay_print2('Thanks for playing!')
+        time.sleep(4)
+        os.system('cls')
         break
 
 exit(0)

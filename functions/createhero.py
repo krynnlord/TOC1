@@ -20,9 +20,7 @@ def createhero():
     l.delay_print(f'{l.ColorStyle.RED}WARNING: {l.ColorStyle.RESET}This will delete any previous saved games!')
     l.delay_print("\nAre you sure you want to start a new game with the name: "+ f'{l.ColorStyle.YELLOW}'+name+f'{l.ColorStyle.RESET}' +"?")
     ans = input("\n(Y/N) ")
-    if ans == 'n' or ans == 'N':
-        l.menuValue = '0'
-        return
+    
     if ans == 'y' or ans == 'Y':
         con = sqlite3.connect('data.db')
         cur = con.cursor()
@@ -33,4 +31,8 @@ def createhero():
         con.close()
         print('New game started....')
         time.sleep(2)
+        return        
+    
+    if ans == 'n' or ans == 'N':
+        l.menuValue = '0'
         return

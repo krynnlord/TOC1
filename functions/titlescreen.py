@@ -1,5 +1,5 @@
 import os
-import time
+import time,msvcrt
 import functions.gameFunctions as l
 import keyboard
 
@@ -26,13 +26,21 @@ def title_menu(menuValuea):
     while True:
         if keyboard.is_pressed("q"):
             menuValuea = '3'
+            l.play_sound('asset/button_press.wav')
+            msvcrt.getch() # Clears Input
             return menuValuea
         if keyboard.is_pressed("n"):
             menuValuea = '1'
+            l.play_sound('asset/button_press.wav')
+            msvcrt.getch()
             return menuValuea
         if keyboard.is_pressed("l"):
             menuValuea = '2'
+            l.play_sound('asset/button_press.wav')
+            msvcrt.getch()
             return menuValuea
         if keyboard.is_pressed("i"):
             menuValuea = '4'
+            l.play_sound('asset/button_press.wav')
+            msvcrt.getch()
             return menuValuea

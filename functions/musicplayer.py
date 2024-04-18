@@ -4,9 +4,14 @@ import pygame
 
 def play_music(mp3File):
     pygame.mixer.init()
-    pygame.mixer.music.load(mp3File)
-    pygame.mixer.music.set_volume(1)
-    pygame.mixer.music.play()
+    sound = pygame.mixer.Sound(mp3File)
+    channel = pygame.mixer.Channel(0)
+    channel.play(sound, -1)
+    channel.set_volume(0.3)
+
+    # pygame.mixer.music.load(mp3File)
+    # pygame.mixer.music.set_volume(1)
+    # pygame.mixer.music.play(-1)
 
 def music_toggle():
     if pygame.mixer.music.get_busy():
@@ -23,3 +28,10 @@ def music_raise():
     current_volume = pygame.mixer.music.get_volume()
     new_volume = current_volume + .1
     pygame.mixer.music.set_volume(new_volume)
+
+def play_sound(mp3File):
+    pygame.mixer.init()
+    sound = pygame.mixer.Sound(mp3File)
+    channel = pygame.mixer.Channel(1)
+    channel.play(sound)
+    channel.set_volume(1)    
