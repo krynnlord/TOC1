@@ -27,24 +27,31 @@ def View():
         ans = input('\nYour Choice? ') 
         if ans == '1':
             name = input('Name: ')
-            con = sqlite3.connect('char.db')
+            print("----------------- RECORD SCHEME --------------------")
+            print('(ID,name,hp,hp_max,mp,mp_max,level,atk,def,type)')
+            print("----------------------------------------------------")
+            con = sqlite3.connect('data.db')
             cur = con.cursor()
-            result =(cur.execute("select * from character where name like '%'||?||'%'",(name,)))
-            output = result.fetchall()
-            print(output)
+            result =(cur.execute("select * from character where name like '%'||?||'%' order by id",(name,)))
+            while True:
+                output = result.fetchone()
+                if output == None:
+                    break
+                print(output)
             con.close()
+            
             ans = input('\nPress any key to return')
             break
         
             
         if ans == '2':
             level = input('Level: ')
-            print("----------------------------------------------------")
+            print("----------------- RECORD SCHEME --------------------")
             print('(ID,name,hp,hp_max,mp,mp_max,level,atk,def,type)')
             print("----------------------------------------------------")
-            con = sqlite3.connect('char.db')
+            con = sqlite3.connect('data.db')
             cur = con.cursor()
-            result =(cur.execute("select * from character where level = ?",(level,)))
+            result =(cur.execute("select * from character where level = ? order by id",(level,)))
             
             while True:
                 output = result.fetchone()

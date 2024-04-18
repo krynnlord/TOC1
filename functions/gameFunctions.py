@@ -2,6 +2,7 @@ from functions.loadart import *
 from functions.printer import *
 from functions.titlescreen import *
 from functions.savegameSystem import *
+from functions.createhero import *
 
 # Game Metadata
 GameInfo = { 

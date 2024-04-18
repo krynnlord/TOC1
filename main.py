@@ -5,21 +5,29 @@ import functions.heroVariables as hero
 import time, os
 
 menuValue = '0'
-l.titlescreen() # Load the Title Screen
-menuValue=l.title_menu(menuValue) # Load the Title Menu
-
+# l.titlescreen() # Load the Title Screen
+# menuValue=l.title_menu(menuValue) # Load the Title Menu
+l.createhero()
 
 # Code for New Game
 if menuValue == '1':
     l.delay_print2('New Game selected...')
     time.sleep(2)
-
+    l.createhero()
 
 # Code for Load Game
 if menuValue == '2':
     l.delay_print2('Loading Game...')
     time.sleep(2)
     
+
+
+
+
+### MAIN CODE ####
+
+
+
 
 # Game Info Dump
 if menuValue == '4':

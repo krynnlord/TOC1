@@ -2,7 +2,7 @@
 *I will store ideas stored here for future projects or reference to materials already programmed.*
 
 ### This line can be called to show graphic from DAT file:
-    filetitle = 'data/castle.dat'
+    filetitle = 'asset/castle.dat'
         data = ''
         print('')
         print(l.loadart(filetitle, data))

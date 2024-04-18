@@ -5,7 +5,7 @@ import keyboard
 
 # Title Screen
 def titlescreen():
-    filetitle = 'data/title.dat'
+    filetitle = 'asset/title.dat'
     data = ''
     os.system('cls')
     print(f"{l.ColorStyle.RED}"+l.loadart(filetitle, data)+f"{l.ColorStyle.RESET}")

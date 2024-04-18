@@ -51,7 +51,7 @@ def Create():
         if ans == 'y' or ans == 'Y':
             print('Writing monster to database....')
 
-            con = sqlite3.connect('char.db')
+            con = sqlite3.connect('data.db')
             cur = con.cursor()
 
             # Write to DB
