@@ -60,6 +60,14 @@ while True:
         os.system('cls')
         break
 
+# Battle Simulation
+    if menuValue == 'b':
+        l.delay_print2('Battle Preview...')
+        time.sleep(2)
+        os.system('cls')
+        l.battle_seq()
+
+
 # Quit the Game
     if menuValue == '4':
         l.delay_print2('Thanks for playing!')

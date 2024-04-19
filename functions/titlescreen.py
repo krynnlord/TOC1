@@ -46,6 +46,11 @@ def title_menu(menuValuea):
             l.play_sound('asset/button_press.wav')
             msvcrt.getch()
             return menuValuea
+        if keyboard.is_pressed("b"):
+            menuValuea = 'b'
+            l.play_sound('asset/button_press.wav')
+            msvcrt.getch()
+            return menuValuea
         if keyboard.is_pressed("3"):
             menuValuea = '3'
             l.play_sound('asset/button_press.wav')

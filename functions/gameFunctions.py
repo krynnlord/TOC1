@@ -4,6 +4,7 @@ from functions.titlescreen import *
 from functions.savegameSystem import *
 from functions.createhero import *
 from functions.musicplayer import * 
+from functions.battle import *
 from cursor import *
 
 menuValue = '0'
