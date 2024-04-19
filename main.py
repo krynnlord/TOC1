@@ -30,10 +30,11 @@ while True:
     if menuValue == '2':
         l.delay_print2('Loading Game...')
         time.sleep(2)
+        os.system('cls')
         break
 
 # Code for Load Game
-    if menuValue == '4':
+    if menuValue == '3':
         l.delay_print2('Options...')
         time.sleep(2)
         os.system('cls')
@@ -48,18 +49,19 @@ while True:
 
 
 # Game Info Dump
-    if menuValue == '4':
-        l.delay_print2('Game Info...')
-        time.sleep(2)
-        os.system('cls')
+    if menuValue == 'i':
+        l.cursor.hide()
+        l.delay_print2('Game Info...\n')     
         print(l.GameInfo['GameTitle'] + ': ' + l.GameInfo['GameSubtitle'])
         print('Version: ' + l.GameInfo['GameVersion'])
         print('Copyright: ' + l.GameInfo['Copyright'])
         print('Author: ' + l.GameInfo['Author'])
+        time.sleep(10)
+        os.system('cls')
         break
 
 # Quit the Game
-    if menuValue == '3':
+    if menuValue == '4':
         l.delay_print2('Thanks for playing!')
         time.sleep(4)
         os.system('cls')

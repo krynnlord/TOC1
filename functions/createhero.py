@@ -5,7 +5,7 @@ def createhero():
     os.system('cls')
     filetitle = 'asset/createhero.dat'
     data = ''
-    print(l.loadart(filetitle, data))
+    print(f"{l.ColorStyle.GREEN}"+l.loadart(filetitle, data)+f"{l.ColorStyle.RESET}")
     print("Creating a new game. Please enter a name for your hero.")
     l.cursor.show()
     name = input('Name: ' )

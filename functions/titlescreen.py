@@ -27,7 +27,7 @@ def title_menu(menuValuea):
 
     while True:
         if keyboard.is_pressed("4"):
-            menuValuea = '3'
+            menuValuea = '4'
             l.play_sound('asset/button_press.wav')
             msvcrt.getch() # Clears Input
             return menuValuea
@@ -42,12 +42,12 @@ def title_menu(menuValuea):
             msvcrt.getch()
             return menuValuea
         if keyboard.is_pressed("i"):
-            menuValuea = '4'
+            menuValuea = 'i'
             l.play_sound('asset/button_press.wav')
             msvcrt.getch()
             return menuValuea
         if keyboard.is_pressed("3"):
-            menuValuea = '4'
+            menuValuea = '3'
             l.play_sound('asset/button_press.wav')
             msvcrt.getch()
             return menuValuea
