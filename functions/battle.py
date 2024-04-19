@@ -21,10 +21,10 @@ def battle_seq():
     # Define Enemy 
     enemy = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'level': 0}
     enemy_current = enemy
-    enemy_current['name'] = 'Rat'
+    enemy_current['name'] = 'Ghoul'
     enemy_current['level'] = 1
-    enemy_current['HP'] = 100
-    enemy_current['HP_max'] = 100
+    enemy_current['HP'] = 200
+    enemy_current['HP_max'] = 200
     enemy_current['MP'] = 0
     enemy_current['MP_max']  = 0
 
@@ -43,7 +43,7 @@ def battle_seq():
         hero_disp_hp = (str(hero['HP'])+'/'+ str(hero['HP_max']))
         hero_disp_mp = (str(hero['MP'])+'/'+ str(hero['MP_max']))
         print(f"{l.ColorStyle.GREEN}___ PLAYER __________________________________ LEVEL: " +str(hero['level'])+ f"{l.ColorStyle.RESET}\n")
-        print("Name: "+hero['name'].ljust(15)+"HP: "+hero_disp_hp.ljust(14)+"MP: "+hero_disp_hp)
+        print("Name: "+hero['name'].ljust(15)+"HP: "+hero_disp_hp.ljust(14)+"MP: "+hero_disp_mp)
 
         # Print HERO Health Bars
         hp_bar = ""
@@ -135,25 +135,30 @@ def battle_seq():
 
             # Hero Turn
             print('You attack the '+enemy_current['name']+ ' with your sword')
-            atk_value = random.randrange(10,20)
+            atk_value = random.randrange(0,20)
             enemy_current['HP'] -= atk_value
             if enemy_current['HP'] <= 0:
                 enemy_current['HP'] = 0
                 hero_combat_string = "You have slain a "+enemy_current['name']+"."
                 endcombat = True
             else:    
-                hero_combat_string = "Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage."
-
+                if atk_value >= 1:
+                    hero_combat_string = "Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage."
+                else:
+                    hero_combat_string = "misses "+enemy_current['name']  +" with "+hero_equip['weapon'] +"."
             # Enemy Turn
             print(enemy_current['name']+' attacks you.')
-            atk_value = random.randrange(10,15)
+            atk_value = random.randrange(0,15)
             hero['HP'] -= atk_value
             if hero['HP'] <= 0:
                 hero['HP'] = 0
                 enemy_combat_string = enemy_current['name']+" has killed you."
                 endcombat = True
             else:    
-                enemy_combat_string = "Hits " + hero['name'] +" for " + str(atk_value) +" damage."
+                if atk_value >= 1:
+                    enemy_combat_string = "Hits " + hero['name'] +" for " + str(atk_value) +" damage."
+                else:
+                    enemy_combat_string = "missed " + hero['name'] +"."
 
 
         if ans == '4':
