@@ -7,18 +7,23 @@ def createhero():
     data = ''
     print(l.loadart(filetitle, data))
     print("Creating a new game. Please enter a name for your hero.")
+    l.cursor.show()
     name = input('Name: ' )
     if name == '':
+        l.cursor.hide()
         print('You must enter a name.')
         time.sleep(2)
         createhero()
     if len(name) < 3:
+        l.cursor.hide()
         print('Your name must be 3 characters or more in length')
         time.sleep(2)
         createhero()
     #Verification on new game
-    l.delay_print(f'{l.ColorStyle.RED}WARNING: {l.ColorStyle.RESET}This will delete any previous saved games!')
-    l.delay_print("\nAre you sure you want to start a new game with the name: "+ f'{l.ColorStyle.YELLOW}'+name+f'{l.ColorStyle.RESET}' +"?")
+    l.cursor.hide()
+    l.delay_print2(f'{l.ColorStyle.RED}WARNING: {l.ColorStyle.RESET}This will delete your current game progress!')
+    l.delay_print2("\nAre you sure you want to start over "+ f'{l.ColorStyle.YELLOW}'+name+f'{l.ColorStyle.RESET}' +"?")
+    l.cursor.show()
     ans = input("\n(Y/N) ")
     
     if ans == 'y' or ans == 'Y':
@@ -35,4 +40,5 @@ def createhero():
     
     if ans == 'n' or ans == 'N':
         l.menuValue = '0'
+        l.cursor.hide()
         return

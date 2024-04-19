@@ -10,6 +10,7 @@ cur = con.cursor()
 result=cur.execute("select filename from music where id ='2'").fetchone()
 musictrack = 'asset/'+ result[0]
 con.close()
+l.cursor.hide() #hides cursor
 l.play_music(musictrack)
 os.system('cls')
 time.sleep(2.2) # for Dramatic Musical Intro
@@ -30,6 +31,13 @@ while True:
         l.delay_print2('Loading Game...')
         time.sleep(2)
         break
+
+# Code for Load Game
+    if menuValue == '4':
+        l.delay_print2('Options...')
+        time.sleep(2)
+        os.system('cls')
+        break    
 
 
 
