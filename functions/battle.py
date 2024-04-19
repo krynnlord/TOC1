@@ -3,14 +3,15 @@ import functions.gameFunctions as l
 
 def battle_seq():
     # Define Hero
-    hero_class = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'level' : 0}
+    hero_class = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'luck': 0,'level' : 0}
     hero = hero_class
-    hero['name'] = 'Martha'
+    hero['name'] = 'Avatar'
     hero['level'] = 4
     hero['HP'] = 200
     hero['HP_max'] = 200
     hero['MP'] = 100
     hero['MP_max']  = 100
+    hero['luck'] = 2
 
     # Hero Equiped
     equipment = {'weapon' : '', 'armor' :'' }
@@ -19,7 +20,7 @@ def battle_seq():
     hero_equip['armor'] = 'Cloth Armor'
 
     # Define Enemy 
-    enemy = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'level': 0}
+    enemy = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'luck' : 0, 'level': 0}
     enemy_current = enemy
     enemy_current['name'] = 'Ghoul'
     enemy_current['level'] = 1
@@ -27,10 +28,11 @@ def battle_seq():
     enemy_current['HP_max'] = 200
     enemy_current['MP'] = 0
     enemy_current['MP_max']  = 0
+    enemy_current['luck'] = 1
 
     # Battle Strings
-    hero_combat_string = "enters combat with " + enemy['name']+"."
-    enemy_combat_string = 'enters combat with ' + hero['name']+'.'
+    hero_combat_string = "Ready for Combat."
+    enemy_combat_string = "Ready for Combat."
 
     # Combat Active
     endcombat = False
@@ -134,22 +136,36 @@ def battle_seq():
         if ans == '1':
 
             # Hero Turn
-            print('You attack the '+enemy_current['name']+ ' with your sword')
+            #print('You attack the '+enemy_current['name']+ ' with your sword')
             atk_value = random.randrange(0,20)
-            enemy_current['HP'] -= atk_value
+            modifier_value = 0
+            hero_crit = 0
+            luckmod = random.randrange(hero['luck'], 20)
+            if luckmod >= 16:
+                modifier_value = ((atk_value*hero['luck']) * 2)
+                hero_crit = 1
+            if hero_crit == 1:
+                enemy_current['HP'] -= atk_value + modifier_value
+            else:        
+                enemy_current['HP'] -= atk_value
             if enemy_current['HP'] <= 0:
                 enemy_current['HP'] = 0
-                hero_combat_string = "You have slain a "+enemy_current['name']+"."
+                hero_combat_string = "Hits "+enemy_current['name']+ " with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage, and kills it!"
                 endcombat = True
             else:    
                 if atk_value >= 1:
-                    hero_combat_string = "Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage."
+                    if hero_crit == 1:
+                        hero_combat_string = "*CRITICAL* Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage."
+                    else:
+                        hero_combat_string = "Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage."
                 else:
-                    hero_combat_string = "misses "+enemy_current['name']  +" with "+hero_equip['weapon'] +"."
+                    hero_combat_string = "misses "+enemy_current['name']  +"."
             # Enemy Turn
-            print(enemy_current['name']+' attacks you.')
+            #print(enemy_current['name']+' attacks you.')
             atk_value = random.randrange(0,15)
             hero['HP'] -= atk_value
+            if endcombat == True:
+                atk_value = 0
             if hero['HP'] <= 0:
                 hero['HP'] = 0
                 enemy_combat_string = enemy_current['name']+" has killed you."
@@ -158,7 +174,10 @@ def battle_seq():
                 if atk_value >= 1:
                     enemy_combat_string = "Hits " + hero['name'] +" for " + str(atk_value) +" damage."
                 else:
-                    enemy_combat_string = "missed " + hero['name'] +"."
+                    if endcombat == True:
+                        enemy_combat_string = "has died."  
+                    else:
+                        enemy_combat_string = "misses " + hero['name'] +"."
 
 
         if ans == '4':
