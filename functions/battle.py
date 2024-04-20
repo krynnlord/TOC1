@@ -1,7 +1,13 @@
 import os, random 
+from rich.console import Console
+from rich.theme import Theme
+from rich.table import Table
 import functions.gameFunctions as l
 
 def battle_seq():
+    custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
+    console = Console(theme=custom_theme)
+
     # Define Hero
     hero_class = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'luck': 0,'level' : 0}
     hero = hero_class
@@ -36,34 +42,40 @@ def battle_seq():
 
     # Combat Active
     endcombat = False
-    
+
     # Set Sounds *** 0-MISS 1-HIT 2-KILL 3-CRIT 4-NONE
     hitmiss = 4
     hitmiss_e = 4
     l.play_music("asset/battle.mp3",.1)
+
     # Battle Loop
+
+
     while True:
 
-        # Hero Display
         os.system('cls')
+
+        # Hero Display
+        table = Table(title='Player', title_justify='left', style='green')
+        hero_table_line = ("Name                   Level: "+ str(hero['level']))
+        table.add_column(hero_table_line, width = 35)
         hero_disp_hp = (str(hero['HP'])+'/'+ str(hero['HP_max']))
         hero_disp_mp = (str(hero['MP'])+'/'+ str(hero['MP_max']))
-        print(f"{l.ColorStyle.GREEN}___ PLAYER __________________________________ LEVEL: " +str(hero['level'])+ f"{l.ColorStyle.RESET}\n")
-        print("Name: "+hero['name'].ljust(15)+"HP: "+hero_disp_hp.ljust(14)+"MP: "+hero_disp_mp)
+        hero_line1 = (hero['name'])
 
-        # Print HERO Health Bars
+        table.add_column("HP: " + hero_disp_hp, width = 15)
+        table.add_column("MP: " + hero_disp_mp, width = 15)
+
+        # print HERO HPbar
         hp_bar = ""
         if hero['HP_max'] == 0:
             bar_ticks = 0
         else:
             bar_ticks = (hero['HP'] / hero['HP_max']) * 100 / 10
-
         while bar_ticks > 0:
-            hp_bar += "█"
+            hp_bar += "[green]█[/green]"
             bar_ticks -= 1
-        blankspace = '                     '
-        print(blankspace, end='')
-        print(f"{l.ColorStyle.GREEN}"+hp_bar.ljust(18)+f"{l.ColorStyle.RESET}",end='' )
+        hero_line2 = (hp_bar)
 
         # print HERO Manabar
         mp_bar = ""
@@ -71,51 +83,57 @@ def battle_seq():
             bar_ticks = 0
         else:
             bar_ticks = (hero['MP'] / hero['MP_max']) * 100 / 10
-
         while bar_ticks > 0:
-            mp_bar += "█"
+            mp_bar += "[blue]█[/blue]"
             bar_ticks -= 1
-        print(f"{l.ColorStyle.BLUE}"+mp_bar+f"{l.ColorStyle.RESET}",end='' )
+        hero_line3 = (mp_bar)
 
+        # Create Hero Table
+        table.add_row(hero_line1,hero_line2,hero_line3)
+        console.print(table)
 
         # Enemy Display
-        print('\n')
+        table = Table(title = 'Enemy', title_justify='left', style="red")
+        enemy_table_line = ("Name                   Level: "+ str(enemy_current['level']))
+        table.add_column(enemy_table_line, width = 35)
+
         enemy_disp_hp = (str(enemy_current['HP'])+'/'+ str(enemy_current['HP_max']))
         enemy_disp_mp = (str(enemy_current['MP'])+'/'+ str(enemy_current['MP_max']))
-        print(f"{l.ColorStyle.RED}___ ENEMY ___________________________________ LEVEL: " +str(enemy_current['level'])+ f"{l.ColorStyle.RESET}\n")
-        print("Name: "+enemy_current['name'].ljust(15)+"HP: "+enemy_disp_hp.ljust(14)+"MP: "+enemy_disp_mp)
+        enemy_line1 = (enemy_current['name'])
 
-        # Print ENEMY Health Bars
+        table.add_column("HP: " + enemy_disp_hp, width = 15)
+        table.add_column("MP: " + enemy_disp_mp, width = 15)
+
+        # print HERO HPbar
         hp_bar = ""
         if enemy_current['HP_max'] == 0:
             bar_ticks = 0
         else:
             bar_ticks = (enemy_current['HP'] / enemy_current['HP_max']) * 100 / 10
-
         while bar_ticks > 0:
-            hp_bar += "█"
+            hp_bar += "[green]█[/green]"
             bar_ticks -= 1
-        blankspace = '                     '
-        print(blankspace, end='')
-        print(f"{l.ColorStyle.GREEN}"+hp_bar.ljust(18)+f"{l.ColorStyle.RESET}",end='' )
+        enemy_line2 = (hp_bar)
 
-        # print ENEMY Manabar
+        # print HERO Manabar
         mp_bar = ""
         if enemy_current['MP_max'] == 0:
             bar_ticks = 0
         else:
             bar_ticks = (enemy_current['MP'] / enemy_current['MP_max']) * 100 / 10
-
         while bar_ticks > 0:
-            mp_bar += "█"
+            mp_bar += "[blue]█[/blue]"
             bar_ticks -= 1
-        print(f"{l.ColorStyle.BLUE}"+mp_bar+f"{l.ColorStyle.RESET}",end='' )
+        enemy_line3 = (mp_bar)
 
+        # Create Enemy Table
+        table.add_row(enemy_line1,enemy_line2,enemy_line3)
+        console.print(table)
 
-        # Battle Log Display
-        print('\n')
-        print("___ COMBAT LOG _______________________________________\n")
-        if hitmiss == 1:
+        # Setup Battle Log Table
+        table = Table(title ='Battle Log', style="white", title_justify="left", width=75)
+        table.add_column("[yellow]Combat[/yellow]")
+        if hitmiss == 1: 
             l.play_sound('asset/hit.wav')
         if hitmiss == 0:
             l.play_sound('asset/miss.wav')
@@ -123,7 +141,6 @@ def battle_seq():
             l.play_sound('asset/kill.wav')
         if hitmiss == 3:
             l.play_sound('asset/crit.wav')       
-        l.delay_print2(f"{l.ColorStyle.GREEN}"+hero['name']+f"{l.ColorStyle.RESET}"+': '+hero_combat_string+'\n')
         if hitmiss_e == 1:
             l.play_sound('asset/hit.wav')
         if hitmiss_e == 2:
@@ -131,29 +148,34 @@ def battle_seq():
         if hitmiss_e == 0:
             l.play_sound('asset/miss.wav')
         if hitmiss_e == 3:
-            l.play_sound('asset/crit.wav')           
-        l.delay_print2(f"{l.ColorStyle.RED}"+enemy_current['name']+f"{l.ColorStyle.RESET}"+': '+enemy_combat_string+'\n')
-
-
+            l.play_sound('asset/crit.wav') 
+        
+        # Print the combat strings    
+        hero_combat_string = ("[green]"+hero['name']+'[/green]: ' + hero_combat_string+'\n')          
+        enemy_combat_string = ("[red]"+ enemy_current['name']+'[/red]: '+enemy_combat_string)
+        
+        table.add_row(hero_combat_string+enemy_combat_string)
+        console.print(table)
+        
         # Actions Menu
         if endcombat == True:
-            print('\n')
-            print(f"{l.ColorStyle.YELLOW}<-ACTIONS->{l.ColorStyle.RESET}")        
-            print(f"{l.ColorStyle.YELLOW}1{l.ColorStyle.RESET}) Exit Combat")
-            ans = input('Command > ')
+            #console.print('\n')
+            console.print("ACTIONS", style="bold underline")        
+            console.print("1) :door: Exit Combat")
+            ans = input('\nCommand > ')
             l.play_music('asset/title.mp3',0.3)
             break
         else:
-            print('\n')
-            print(f"{l.ColorStyle.YELLOW}<-ACTIONS->{l.ColorStyle.RESET}")
-            print(f"{l.ColorStyle.YELLOW}1{l.ColorStyle.RESET}) Attack with " + hero_equip['weapon'])
-            print(f"{l.ColorStyle.YELLOW}2{l.ColorStyle.RESET}) Cast")
-            print(f"{l.ColorStyle.YELLOW}3{l.ColorStyle.RESET}) Inventory")
-            print(f"{l.ColorStyle.YELLOW}4{l.ColorStyle.RESET}) Run")
+            #console.print('\n')
+            console.print("ACTIONS", style="bold underline red")
+            console.print("1) :dagger:  Attack with " + hero_equip['weapon'])
+            console.print("2) :sparkler: Cast")
+            console.print("3) :handbag: Inventory")
+            console.print("4) :runner: Run")
 
 
-        ans = input('Command > ')
-        if ans == '1':
+        ans = input('\nCommand > ')
+        if ans == '1' or '2' or '3' or '':
 
             # Hero Turn
             atk_value = random.randrange(0,20)
@@ -192,22 +214,16 @@ def battle_seq():
             if hero['HP'] <= 0:
                 hero['HP'] = 0
                 enemy_combat_string = enemy_current['name']+" has killed you."
-                hitmiss_e = 2
                 endcombat = True
             else:    
                 if atk_value >= 1:
                     enemy_combat_string = "Hits " + hero['name'] +" for " + str(atk_value) +" damage."
-                    hitmiss_e = 1
                 else:
                     if endcombat == True:
                         enemy_combat_string = "Dead."
-                        hitmiss_e = 4  
                     else:
                         enemy_combat_string = "misses " + hero['name'] +"."
-                        hitmiss_e = 0
 
 
         if ans == '4':
-            hero_equip['weapon'] ='Hands'
-        if ans == '5':
-            break    
+            endcombat = True
