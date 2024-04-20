@@ -7,7 +7,7 @@ def battle_seq():
     hero = hero_class
     hero['name'] = 'Avatar'
     hero['level'] = 4
-    hero['HP'] = 200
+    hero['HP'] = 150
     hero['HP_max'] = 200
     hero['MP'] = 100
     hero['MP_max']  = 100
@@ -36,7 +36,11 @@ def battle_seq():
 
     # Combat Active
     endcombat = False
-
+    
+    # Set Sounds *** 0-MISS 1-HIT 2-KILL 3-CRIT 4-NONE
+    hitmiss = 4
+    hitmiss_e = 4
+    l.play_music("asset/battle.mp3",.1)
     # Battle Loop
     while True:
 
@@ -111,7 +115,23 @@ def battle_seq():
         # Battle Log Display
         print('\n')
         print("___ COMBAT LOG _______________________________________\n")
+        if hitmiss == 1:
+            l.play_sound('asset/hit.wav')
+        if hitmiss == 0:
+            l.play_sound('asset/miss.wav')
+        if hitmiss == 2:
+            l.play_sound('asset/kill.wav')
+        if hitmiss == 3:
+            l.play_sound('asset/crit.wav')       
         l.delay_print2(f"{l.ColorStyle.GREEN}"+hero['name']+f"{l.ColorStyle.RESET}"+': '+hero_combat_string+'\n')
+        if hitmiss_e == 1:
+            l.play_sound('asset/hit.wav')
+        if hitmiss_e == 2:
+            l.play_sound('asset/kill.wav')
+        if hitmiss_e == 0:
+            l.play_sound('asset/miss.wav')
+        if hitmiss_e == 3:
+            l.play_sound('asset/crit.wav')           
         l.delay_print2(f"{l.ColorStyle.RED}"+enemy_current['name']+f"{l.ColorStyle.RESET}"+': '+enemy_combat_string+'\n')
 
 
@@ -121,28 +141,27 @@ def battle_seq():
             print(f"{l.ColorStyle.YELLOW}<-ACTIONS->{l.ColorStyle.RESET}")        
             print(f"{l.ColorStyle.YELLOW}1{l.ColorStyle.RESET}) Exit Combat")
             ans = input('Command > ')
+            l.play_music('asset/title.mp3',0.3)
             break
         else:
             print('\n')
             print(f"{l.ColorStyle.YELLOW}<-ACTIONS->{l.ColorStyle.RESET}")
             print(f"{l.ColorStyle.YELLOW}1{l.ColorStyle.RESET}) Attack with " + hero_equip['weapon'])
             print(f"{l.ColorStyle.YELLOW}2{l.ColorStyle.RESET}) Cast")
-            print(f"{l.ColorStyle.YELLOW}3{l.ColorStyle.RESET}) Wait")
-            print(f"{l.ColorStyle.YELLOW}4{l.ColorStyle.RESET}) Inventory")
-            print(f"{l.ColorStyle.YELLOW}5{l.ColorStyle.RESET}) Run")
+            print(f"{l.ColorStyle.YELLOW}3{l.ColorStyle.RESET}) Inventory")
+            print(f"{l.ColorStyle.YELLOW}4{l.ColorStyle.RESET}) Run")
 
 
         ans = input('Command > ')
         if ans == '1':
 
             # Hero Turn
-            #print('You attack the '+enemy_current['name']+ ' with your sword')
             atk_value = random.randrange(0,20)
             modifier_value = 0
             hero_crit = 0
             luckmod = random.randrange(hero['luck'], 20)
             if luckmod >= 16:
-                modifier_value = ((atk_value*hero['luck']) * 2)
+                modifier_value = round((atk_value*hero['luck']) * 1.1)
                 hero_crit = 1
             if hero_crit == 1:
                 enemy_current['HP'] -= atk_value + modifier_value
@@ -151,15 +170,19 @@ def battle_seq():
             if enemy_current['HP'] <= 0:
                 enemy_current['HP'] = 0
                 hero_combat_string = "Hits "+enemy_current['name']+ " with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage, and kills it!"
+                hitmiss = 2
                 endcombat = True
             else:    
                 if atk_value >= 1:
                     if hero_crit == 1:
-                        hero_combat_string = "*CRITICAL* Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage."
+                        hero_combat_string = "*CRITICAL* Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value+ modifier_value) +" damage."
+                        hitmiss = 3
                     else:
                         hero_combat_string = "Hits "+enemy_current['name']  +" with "+hero_equip['weapon'] +" for " + str(atk_value) +" damage."
+                        hitmiss = 1
                 else:
                     hero_combat_string = "misses "+enemy_current['name']  +"."
+                    hitmiss = 0
             # Enemy Turn
             #print(enemy_current['name']+' attacks you.')
             atk_value = random.randrange(0,15)
@@ -169,15 +192,19 @@ def battle_seq():
             if hero['HP'] <= 0:
                 hero['HP'] = 0
                 enemy_combat_string = enemy_current['name']+" has killed you."
+                hitmiss_e = 2
                 endcombat = True
             else:    
                 if atk_value >= 1:
                     enemy_combat_string = "Hits " + hero['name'] +" for " + str(atk_value) +" damage."
+                    hitmiss_e = 1
                 else:
                     if endcombat == True:
-                        enemy_combat_string = "has died."  
+                        enemy_combat_string = "Dead."
+                        hitmiss_e = 4  
                     else:
                         enemy_combat_string = "misses " + hero['name'] +"."
+                        hitmiss_e = 0
 
 
         if ans == '4':

@@ -11,7 +11,7 @@ result=cur.execute("select filename from music where id ='2'").fetchone()
 musictrack = 'asset/'+ result[0]
 con.close()
 l.cursor.hide() #hides cursor
-l.play_music(musictrack)
+l.play_music(musictrack,0.3)
 os.system('cls')
 time.sleep(2.2) # for Dramatic Musical Intro
 
