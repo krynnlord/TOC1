@@ -21,8 +21,9 @@ def createhero():
         createhero()
     #Verification on new game
     l.cursor.hide()
+    shortname = name[:10]
     l.delay_print2(f'{l.ColorStyle.RED}WARNING: {l.ColorStyle.RESET}This will delete your current game progress!')
-    l.delay_print2("\nAre you sure you want to start over "+ f'{l.ColorStyle.YELLOW}'+name+f'{l.ColorStyle.RESET}' +"?")
+    l.delay_print2("\nAre you sure you want to start over "+ f'{l.ColorStyle.YELLOW}'+shortname+f'{l.ColorStyle.RESET}' +"?")
     l.cursor.show()
     ans = input("\n(Y/N) ")
     
@@ -31,7 +32,7 @@ def createhero():
         cur = con.cursor()
 
         # Write to DB - HERO
-        cur.execute("update hero set name='" + name + "',hp=10,hp_max=10,mp=10,mp_max=10,str=10,int=10,dex=10,luck=5,DEF_m=0,DEF_s=0,DEF_b=0,level=1,exp=0,stat=1 where id=1")
+        cur.execute("update hero set name='" + shortname + "',hp=10,hp_max=10,mp=10,mp_max=10,str=10,int=10,dex=10,luck=5,DEF_m=0,DEF_s=0,DEF_b=0,level=1,exp=0,stat=1 where id=1")
         con.commit()
         con.close()
         print('New game started....')
