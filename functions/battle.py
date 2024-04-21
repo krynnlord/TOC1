@@ -169,13 +169,13 @@ def battle_seq():
             #console.print('\n')
             console.print("ACTIONS", style="bold underline red")
             console.print("1) :dagger:  Attack with " + hero_equip['weapon'])
-            console.print("2) :sparkler: Cast")
+            console.print("2) :sparkler: Spellbook")
             console.print("3) :handbag: Inventory")
             console.print("4) :runner: Run")
 
 
         ans = input('\nCommand > ')
-        if ans == '1' or '2' or '3' or '':
+        if ans == '1' or ' ':
 
             # Hero Turn
             atk_value = random.randrange(0,20)
@@ -224,6 +224,12 @@ def battle_seq():
                     else:
                         enemy_combat_string = "misses " + hero['name'] +"."
 
-
+        if ans == '2':
+            l.spellbook()
+            hitmiss = 4
+        if ans == '3':
+            l.inventory()
+            hitmiss = 4
         if ans == '4':
             endcombat = True
+            hitmiss = 4

@@ -6,6 +6,8 @@ from functions.createhero import *
 from functions.musicplayer import * 
 from functions.battle import *
 from cursor import *
+from functions.inventory import *
+from functions.spellbook import *
 
 menuValue = '0'
 
