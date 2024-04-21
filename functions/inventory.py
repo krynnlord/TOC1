@@ -17,7 +17,7 @@ def inventory():
       self.desc = desc
       self.qty = qty
 
-  cloth_armor = Item("Cloth Armor", 0, 2, "A robe that covers the wear but supplys little armor", 1)
+  cloth_armor = Item("Cloth Armor", 0, 2, "A robe that covers the wearer but supplies little armor", 1)
   short_sword = Item("Short Sword",5, 0, "A small sword that deals normal damage", 1)
 
   real_cloth_armor = copy.deepcopy(cloth_armor)

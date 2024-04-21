@@ -4,6 +4,9 @@ import functions.gameFunctions as l
 import functions.heroVariables as hero
 import time, os, sqlite3
 
+
+l.battle_seq()# temp to skip
+
 #open database for Music Theme
 con = sqlite3.connect('data.db')
 cur = con.cursor()

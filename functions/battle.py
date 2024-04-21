@@ -11,9 +11,9 @@ def battle_seq():
     # Define Hero
     hero_class = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'luck': 0,'level' : 0}
     hero = hero_class
-    hero['name'] = 'Avatar'
+    hero['name'] = 'Kyrnnlord'
     hero['level'] = 4
-    hero['HP'] = 150
+    hero['HP'] = 200
     hero['HP_max'] = 200
     hero['MP'] = 100
     hero['MP_max']  = 100
@@ -60,36 +60,24 @@ def battle_seq():
         hero_table_line = ("Name                   Level: "+ str(hero['level']))
         table.add_column(hero_table_line, width = 35)
         hero_disp_hp = (str(hero['HP'])+'/'+ str(hero['HP_max']))
-        hero_disp_mp = (str(hero['MP'])+'/'+ str(hero['MP_max']))
         hero_line1 = (hero['name'])
 
-        table.add_column("HP: " + hero_disp_hp, width = 15)
-        table.add_column("MP: " + hero_disp_mp, width = 15)
+        table.add_column("HP: " + hero_disp_hp, width = 25)
+
 
         # print HERO HPbar
         hp_bar = ""
         if hero['HP_max'] == 0:
             bar_ticks = 0
         else:
-            bar_ticks = (hero['HP'] / hero['HP_max']) * 100 / 10
+            bar_ticks = (hero['HP'] / hero['HP_max']) * 100 / 4
         while bar_ticks > 0:
             hp_bar += "[green]█[/green]"
             bar_ticks -= 1
         hero_line2 = (hp_bar)
 
-        # print HERO Manabar
-        mp_bar = ""
-        if hero['MP_max'] == 0:
-            bar_ticks = 0
-        else:
-            bar_ticks = (hero['MP'] / hero['MP_max']) * 100 / 10
-        while bar_ticks > 0:
-            mp_bar += "[blue]█[/blue]"
-            bar_ticks -= 1
-        hero_line3 = (mp_bar)
-
         # Create Hero Table
-        table.add_row(hero_line1,hero_line2,hero_line3)
+        table.add_row(hero_line1,hero_line2)
         console.print(table)
 
         # Enemy Display
@@ -98,40 +86,27 @@ def battle_seq():
         table.add_column(enemy_table_line, width = 35)
 
         enemy_disp_hp = (str(enemy_current['HP'])+'/'+ str(enemy_current['HP_max']))
-        enemy_disp_mp = (str(enemy_current['MP'])+'/'+ str(enemy_current['MP_max']))
         enemy_line1 = (enemy_current['name'])
 
-        table.add_column("HP: " + enemy_disp_hp, width = 15)
-        table.add_column("MP: " + enemy_disp_mp, width = 15)
+        table.add_column("HP: " + enemy_disp_hp, width = 25)
 
         # print HERO HPbar
         hp_bar = ""
         if enemy_current['HP_max'] == 0:
             bar_ticks = 0
         else:
-            bar_ticks = (enemy_current['HP'] / enemy_current['HP_max']) * 100 / 10
+            bar_ticks = (enemy_current['HP'] / enemy_current['HP_max']) * 100 / 4
         while bar_ticks > 0:
             hp_bar += "[green]█[/green]"
             bar_ticks -= 1
         enemy_line2 = (hp_bar)
 
-        # print HERO Manabar
-        mp_bar = ""
-        if enemy_current['MP_max'] == 0:
-            bar_ticks = 0
-        else:
-            bar_ticks = (enemy_current['MP'] / enemy_current['MP_max']) * 100 / 10
-        while bar_ticks > 0:
-            mp_bar += "[blue]█[/blue]"
-            bar_ticks -= 1
-        enemy_line3 = (mp_bar)
-
         # Create Enemy Table
-        table.add_row(enemy_line1,enemy_line2,enemy_line3)
+        table.add_row(enemy_line1,enemy_line2)
         console.print(table)
 
         # Setup Battle Log Table
-        table = Table(title ='Battle Log', style="white", title_justify="left", width=75)
+        table = Table(title ='Battle Log:', style="white", title_justify="left", width=75)
         table.add_column("[yellow]Combat[/yellow]")
         if hitmiss == 1: 
             l.play_sound('asset/hit.wav')

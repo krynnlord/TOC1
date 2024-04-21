@@ -11,8 +11,8 @@ def spellbook():
     os.system("cls")
 
     table = Table(title="Spellbook", padding=(0, 0), width=85, title_justify='left')
-    table.add_column("[red]Spells of the Magi[/red]", justify='center')
-    table.add_column("[yellow]Lore[/yellow]", justify='center', style='normal')
+    table.add_column("[red]Spells of the Magi[/red]", justify='left')
+    table.add_column("[yellow]Lore[/yellow]", justify='left', style='normal')
 
     st = Table(
         padding=(0, 0),
@@ -36,7 +36,7 @@ def spellbook():
     st.add_row('Double', '3', '11','[red]N[/red]')
     st.add_row('Immolation', '3', '12','[red]N[/red]')
 
-    tt="Enchantments that can be applied to multiple (but not all) weapons will be listed under every weapon that can obtain the enchantment and marked in bold. (As there are several enchantments that can be applied to “any sword” or similar.) For the sake of completion there will be a “generic enchantments” list for enchantments that can be applied to any weapon or are too broad to be listed under every weapon. (Example: only one-handed weapons, only melee weapons, only ranged weapons, etc.)')"
+    tt="The spells of the Magi are composed of 3 circles. Each of these circles has 4 spells from each of the dispiplines. These are Invocation, Abjuration, Conjuration, and Evocation.\n\nInvocation is the study of healing spells. Abjuration focuses on protective magic. Conjuration creates objects, and Evocation is the destructive arts. Master each of these displines in their respective circles to become one with the elements.\n\n- Magnus Dylisia"
     table.add_row(st, tt)
     console.print(table)
 
