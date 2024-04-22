@@ -8,6 +8,7 @@ from functions.battle import *
 from cursor import *
 from functions.inventory import *
 from functions.spellbook import *
+from functions.intro import *
 
 menuValue = '0'
 

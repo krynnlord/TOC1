@@ -1,81 +1,60 @@
 # The Oblivion Cycle - Chapter I: The Shimmering Gate
 # (C)opyright 2024 RLM Productions
+
 import functions.gameFunctions as l
 import functions.heroVariables as hero
-import time, os, sqlite3
+import sqlite3, os
+from rich.console import Console
+from rich.theme import Theme
 
-
-l.battle_seq()# temp to skip
-
-#open database for Music Theme
+# Read Game Options from database
 con = sqlite3.connect('data.db')
 cur = con.cursor()
-result=cur.execute("select filename from music where id ='2'").fetchone()
-musictrack = 'asset/'+ result[0]
+result_music = cur.execute("select value from options where id = 1").fetchone() # 0 music is Off 1 is on
+result_title = cur.execute("select value from options where id = 2").fetchone() # 0 is show title 1 is skip
 con.close()
-l.cursor.hide() #hides cursor
-l.play_music(musictrack,0.3)
-os.system('cls')
-time.sleep(2.2) # for Dramatic Musical Intro
 
+if result_music[0] == 1: # Check for Music
+    musictrack = 'asset/title.mp3'
+    l.play_music(musictrack,0.3)
+
+if result_title[0] == 0: # Check for Intro
+    l.intro()
+
+### Main Menu ###
 while True:
-    l.titlescreen() # Load the Title Screen
-    menuValue=l.title_menu(l.menuValue) # Load the Title Menu
-# l.createhero() # Load Create Game
+    os.system('cls')
+    ans = ''
+    filetitle = 'asset/title.dat'
+    data = ''
+    custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
+    console = Console(theme=custom_theme)
+    console.print("[red]"+l.loadart(filetitle, data)+"[/red]")
+    console.print("                          Chapter I: The Shimmering Gate")
+    console.print('')
 
-# Code for New Game
-    if menuValue == '1':
-        l.delay_print2('New Game selected...')
-        time.sleep(2)
-        l.createhero()
+    # Print Choices
+    console.print("([red]1[/red]) New Game")
+    console.print("([red]2[/red]) Load Game")
+    console.print("([red]3[/red]) Game Options")
+    console.print("([red]4[/red]) Quit Game")
+    ans = console.input("\n[yellow]Selection> [/yellow]")
 
-# Code for Load Game
-    if menuValue == '2':
-        l.delay_print2('Loading Game...')
-        time.sleep(2)
-        os.system('cls')
+    # Run Choices
+    if ans == '1':
         break
-
-# Code for Load Game
-    if menuValue == '3':
-        l.delay_print2('Options...')
-        time.sleep(2)
-        os.system('cls')
-        break    
-
-
-
-
-### MAIN CODE ####
-
-
-
-
-# Game Info Dump
-    if menuValue == 'i':
-        l.cursor.hide()
-        l.delay_print2('Game Info...\n')     
-        print(l.GameInfo['GameTitle'] + ': ' + l.GameInfo['GameSubtitle'])
-        print('Version: ' + l.GameInfo['GameVersion'])
-        print('Copyright: ' + l.GameInfo['Copyright'])
-        print('Author: ' + l.GameInfo['Author'])
-        time.sleep(10)
-        os.system('cls')
+    elif ans == '2':
         break
-
-# Battle Simulation
-    if menuValue == 'b':
-        l.delay_print2('Battle Preview...')
-        time.sleep(2)
-        os.system('cls')
+    elif ans == '3':
+        break
+    elif ans == '4':
+        break
+    elif ans == 'b' or ans == 'B': # Test out battle simulation
         l.battle_seq()
 
 
-# Quit the Game
-    if menuValue == '4':
-        l.delay_print2('Thanks for playing!')
-        time.sleep(4)
-        os.system('cls')
-        break
+### MAIN CODE ###
 
-exit(0)
+
+### EXIT CODE ###
+os.system('cls')
