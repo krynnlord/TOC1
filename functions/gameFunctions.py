@@ -1,6 +1,5 @@
 from functions.loadart import *
 from functions.printer import *
-from functions.titlescreen import *
 from functions.savegameSystem import *
 from functions.createhero import *
 from functions.musicplayer import * 
@@ -9,6 +8,7 @@ from cursor import *
 from functions.inventory import *
 from functions.spellbook import *
 from functions.intro import *
+from functions.options import *
 
 menuValue = '0'
 

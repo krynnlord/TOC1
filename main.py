@@ -12,7 +12,7 @@ con = sqlite3.connect('data.db')
 cur = con.cursor()
 result_music = cur.execute("select value from options where id = 1").fetchone() # 0 music is Off 1 is on
 result_title = cur.execute("select value from options where id = 2").fetchone() # 0 is show title 1 is skip
-con.close()
+
 
 if result_music[0] == 1: # Check for Music
     musictrack = 'asset/title.mp3'
@@ -42,11 +42,11 @@ while True:
 
     # Run Choices
     if ans == '1':
-        break
+        l.createhero()
     elif ans == '2':
         break
     elif ans == '3':
-        break
+        l.gameoptions()
     elif ans == '4':
         break
     elif ans == 'b' or ans == 'B': # Test out battle simulation
@@ -57,4 +57,5 @@ while True:
 
 
 ### EXIT CODE ###
+con.close()
 os.system('cls')

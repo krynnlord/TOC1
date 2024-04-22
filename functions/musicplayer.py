@@ -14,10 +14,10 @@ def play_music(mp3File,vol):
     # pygame.mixer.music.play(-1)
 
 def music_toggle():
-    if pygame.mixer.music.get_busy():
-        pygame.mixer.music.pause()
+    if pygame.mixer.Channel(0).get_busy():
+        pygame.mixer.Channel(0).pause()
     else:
-        pygame.mixer.music.unpause()
+        pygame.mixer.Channel(0).unpause()
 
 def music_lower():
     current_volume = pygame.mixer.music.get_volume()
