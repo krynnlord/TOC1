@@ -5,8 +5,8 @@ def createhero():
     os.system('cls')
     filetitle = 'asset/createhero.dat'
     data = ''
-    print(f"{l.ColorStyle.GREEN}"+l.loadart(filetitle, data)+f"{l.ColorStyle.RESET}")
-    print("Creating a new game. Please enter a name for your hero.")
+    print(f"{l.ColorStyle.YELLOW}"+l.loadart(filetitle, data)+f"{l.ColorStyle.RESET}")
+    print("\nCreating a new game. Please enter a name for your hero.")
     l.cursor.show()
     name = input('Name: ' )
     if name == '':
@@ -22,10 +22,10 @@ def createhero():
     #Verification on new game
     l.cursor.hide()
     shortname = name[:10]
-    l.delay_print2(f'{l.ColorStyle.RED}WARNING: {l.ColorStyle.RESET}This will delete your current game progress!')
-    l.delay_print2("\nAre you sure you want to start over "+ f'{l.ColorStyle.YELLOW}'+shortname+f'{l.ColorStyle.RESET}' +"?")
+    l.delay_print2(f'{l.ColorStyle.RED}\nWARNING: {l.ColorStyle.RESET}This will delete your current game progress!')
+    l.delay_print2("\nAre you sure you want to start over as "+ f'{l.ColorStyle.YELLOW}'+shortname+f'{l.ColorStyle.RESET}' +"?")
     l.cursor.show()
-    ans = input("\n(Y/N) ")
+    ans = input(" (Y/N) ")
     
     if ans == 'y' or ans == 'Y':
         con = sqlite3.connect('data.db')
