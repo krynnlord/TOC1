@@ -33,7 +33,8 @@ def gameoptions():
         else:    
             console.print("([red]2[/red]) Play Music (Currently: Off)")
 
-        console.print("([red]3[/red]) Return")
+        console.print("([red]3[/red]) Game Information")
+        console.print("([red]4[/red]) Return")
 
         ans = console.input("\n[yellow]Selection> [/yellow]")
 
@@ -58,6 +59,9 @@ def gameoptions():
                 l.play_music('asset/title.mp3',0.3)
 
         elif ans == '3':
-            
+            l.gameinfo()
+        
+        
+        elif ans == '4':
             break
     

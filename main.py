@@ -34,16 +34,16 @@ while True:
     console.print('')
 
     # Print Choices
-    console.print("([red]1[/red]) New Game")
-    console.print("([red]2[/red]) Load Game")
+    console.print("([red]1[/red]) Play Game")
+    console.print("([red]2[/red]) New Game")
     console.print("([red]3[/red]) Game Options")
     console.print("([red]4[/red]) Quit Game")
     ans = console.input("\n[yellow]Selection> [/yellow]")
 
     # Run Choices
-    if ans == '1':
+    if ans == '2':
         l.createhero()
-    elif ans == '2':
+    elif ans == '1':
         break
     elif ans == '3':
         l.gameoptions()

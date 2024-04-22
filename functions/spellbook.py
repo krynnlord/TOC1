@@ -20,9 +20,9 @@ def spellbook():
         show_lines=False,
     )
     st.add_column("Name", width=15, justify='left', style='cyan' )
-    st.add_column("Cir", justify='center')
-    st.add_column("Min", justify='center')
-    st.add_column('Lrnd',justify='center')
+    st.add_column("Circle", justify='center')
+    st.add_column("Min Lvl", justify='center')
+    st.add_column('Learned',justify='center')
     st.add_row('Heal', '1','1', '[green]Y[/green]')
     st.add_row('Cure', '1', '2','[red]N[/red]')
     st.add_row('Create Food', '1','3', '[red]N[/red]')

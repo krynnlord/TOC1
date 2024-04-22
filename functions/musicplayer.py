@@ -9,10 +9,6 @@ def play_music(mp3File,vol):
     channel.play(sound, -1)
     channel.set_volume(vol)
 
-    # pygame.mixer.music.load(mp3File)
-    # pygame.mixer.music.set_volume(1)
-    # pygame.mixer.music.play(-1)
-
 def music_toggle():
     if pygame.mixer.Channel(0).get_busy():
         pygame.mixer.Channel(0).pause()

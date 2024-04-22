@@ -1,19 +1,12 @@
 # Info-Dump for Game
-*I will store ideas stored here for future projects or reference to materials already programmed.*
-
-### This line can be called to show graphic from DAT file:
-    filetitle = 'asset/castle.dat'
-        data = ''
-        print('')
-        print(l.loadart(filetitle, data))
+*I will store ideas stored here for the project*
 
 ### Adventure Menu:
+
+    Town Circle: Central location where you can choose the below options:
     Castle: Speak with king for Quests
-    Temple: Heal, Cure, Remove Curse
+    Temple: Ibune talisman with spells
     Armory: weapons, armor
-    Inn: Rest, memorize spells
+    Inn: Rest(Heal), Save and Quit
     Provisioner: Buy and Sell Items
     Circle of Stones: Enter the Shimmering Gate for Questing
-
-### Example of Color Coding Text
-    print(f"{l.ColorStyle.RED}"+l.loadart(filetitle, data)+f"{l.ColorStyle.RESET}")
