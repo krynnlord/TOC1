@@ -34,3 +34,14 @@ def hero_damage_calc(hero_stats, hero_weapon):
 
     # return value and crit value
     return modifier_value, hero_crit 
+
+# New Dice Roller
+def diceroller(dicecount, dicevalue):
+    
+    total = []
+
+    for i in range(dicecount):
+        roll = random.randrange(1, dicevalue + 1)
+        total.append(roll)
+        final = max(total)
+    return final
