@@ -13,6 +13,7 @@ from functions.itemVariables import *
 from functions.gearVariables import *
 from functions.spellfunctions import *
 from functions.spellVariables import *
+from functions.damagecalc import *
 from cursor import *
 
 menuValue = '0'
