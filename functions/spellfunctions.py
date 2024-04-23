@@ -1,7 +1,7 @@
 import os
 from rich.console import Console
 from rich.theme import Theme
-from spellVariables import *
+from functions.spellVariables import *
 
 custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
 console = Console(theme=custom_theme)
