@@ -35,13 +35,14 @@ def hero_damage_calc(hero_stats, hero_weapon):
     # return value and crit value
     return modifier_value, hero_crit 
 
-# New Dice Roller
-def diceroller(dicecount, dicevalue):
+# New Dice Roller Takes in string value template like 1d4
+def diceroller(diceroll):
     
     total = []
 
-    for i in range(dicecount):
-        roll = random.randrange(1, dicevalue + 1)
+    for i in range(int(diceroll[0])):
+        roll = random.randrange(1, int(diceroll[2])+1)
         total.append(roll)
         final = max(total)
+    
     return final
