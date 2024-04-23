@@ -10,3 +10,9 @@
     Inn: Rest(Heal), Save and Quit
     Provisioner: Buy and Sell Items
     Circle of Stones: Enter the Shimmering Gate for Questing
+
+### Example of Casting Spells:
+
+    if ans == '1':
+        console.print("Readied spells: ", end="")
+        spellfunctions.spellcast(hero_spells)

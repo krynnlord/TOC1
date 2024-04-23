@@ -11,6 +11,8 @@ from functions.options import *
 from functions.gameinfo import *
 from functions.itemVariables import *
 from functions.gearVariables import *
+from functions.spellfunctions import *
+from functions.spellVariables import *
 from cursor import *
 
 menuValue = '0'
