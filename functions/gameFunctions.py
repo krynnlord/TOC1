@@ -9,11 +9,12 @@ from functions.spellbook import *
 from functions.intro import *
 from functions.options import *
 from functions.gameinfo import *
-from functions.itemVariables import *
-from functions.gearVariables import *
+from functions.items import *
 from functions.spellfunctions import *
 from functions.spellVariables import *
 from functions.damagecalc import *
+from functions.armor import *
+from functions.weapons import *
 from cursor import *
 
 menuValue = '0'

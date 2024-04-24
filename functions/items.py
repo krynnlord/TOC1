@@ -1,13 +1,12 @@
 # Define Item Class
-class Item():
+class item():
 
-	def __init__(self, id, name, type, desc, value, qty):
-		self.id = id
+	def __init__(self, name, type,  value, qty, desc):
 		self.name = name
 		self.type = type
-		self.desc = desc
 		self.value = value
 		self.qty = qty
+		self.desc = desc
 	
 	def add(self,qty):
 		self.qty += qty
@@ -21,4 +20,4 @@ class Item():
 #########################
 
 # Items
-
+potion = item("Potion of Healing", "potion",500, "") # 2d4 + 2 of healing, takes an action
