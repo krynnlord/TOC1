@@ -3,7 +3,7 @@ from functions.classes import *
 ###################
 # Hero ############
 ###################
-hero = player('Krynnlord', 100, 100, 0, 0, 0, 0, 1, 2, 0, 1)
+hero_player = player('Krynnlord', 100, 100, 0, 0, 0, 0, 1, 2, 0, 1)
 
 ###################
 # Items ###########
@@ -75,3 +75,5 @@ splint_armor = armor("Splint Armor", "Heavy", 2000, 17, "")
 plate_armor = armor("Plate Armor", "Heavy", 3000, 18, "")
 
 hero_armor = leather_armor
+
+hero = [hero_player, hero_armor, hero_weapons, hero_items, hero_spells]
