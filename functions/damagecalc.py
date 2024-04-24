@@ -34,7 +34,7 @@ def critroller(luck):
 def damage_calc(luck, mod, weapon_damage):
 	
 	# Base Attack Value
-	atk_value = diceroller(weapon_damage)
+	atk_value = diceroller(weapon_damage) + mod
 	
 	# Initilize Modifier and Crit(0-No 1-Yes)
 	modifier_value = 0
