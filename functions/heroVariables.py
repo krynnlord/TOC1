@@ -1,17 +1,16 @@
-# Define Player Character
-char_name = ''
-hero = {
-'name' : char_name,     # Character Name
-'hp' : 0,               # Health Points
-'hp_max' : 0,           # Max Health Points
-'luck' : 0,             # Luck Value
-'DEF_m': 0,             # Defense against magic
-'DEF_s' : 0,            # Defense against slashing
-'DEF_b' : 0,            # Defense against blunt
-'level' : 1,            # Level
-'mod': 2,               # proficiency modifier
-'exp' : 0,              # Experience
-'stat' : 1,             # Alive(1) Dead(2) Posioned(3) Cursed(4)
-}
-
-# Define Player Inventory
+# Define player class
+class player:
+    def __init__(self, name, hp, hp_max, luck, DEF_m, DEF_s, DEF_b, level, mod, exp, stat):
+        self.name = name
+        self.hp = hp
+        self.hp_max = hp_max
+        self.luck = luck
+        self.DEF_m = DEF_m
+        self.DEF_s = DEF_s
+        self.DEF_b = DEF_b
+        self.level = level
+        self.mod = mod
+        self.exp = exp
+        self.stat = stat
+        
+hero = player('Krynnlord', 100, 100, 0, 0, 0, 0, 1, 2, 0, 1)

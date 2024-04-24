@@ -20,4 +20,4 @@ class item():
 #########################
 
 # Items
-potion = item("Potion of Healing", "potion",500, "") # 2d4 + 2 of healing, takes an action
+potion = item("Potion of Healing", "potion", 500, 1, "") # 2d4 + 2 of healing, takes an action

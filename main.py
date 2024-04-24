@@ -7,6 +7,9 @@ import sqlite3, os
 from rich.console import Console
 from rich.theme import Theme
 
+# Temp Skip Here
+# l.adventuremenu()
+
 # Read Game Options from database
 con = sqlite3.connect('data.db')
 cur = con.cursor()
@@ -44,7 +47,7 @@ while True:
     if ans == '2':
         l.createhero()
     elif ans == '1':
-        break
+        l.adventuremenu()
     elif ans == '3':
         l.gameoptions()
     elif ans == '4':

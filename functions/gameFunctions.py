@@ -6,6 +6,7 @@ from functions.musicplayer import *
 from functions.battle import *
 from functions.inventory import *
 from functions.spellbook import *
+from functions.heroVariables import hero
 from functions.intro import *
 from functions.options import *
 from functions.gameinfo import *
@@ -15,6 +16,8 @@ from functions.spellVariables import *
 from functions.damagecalc import *
 from functions.armor import *
 from functions.weapons import *
+from functions.levelup import *
+from functions.adventure import *
 from cursor import *
 
 menuValue = '0'

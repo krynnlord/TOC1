@@ -10,14 +10,14 @@ def battle_seq():
 
     # Define Hero
     hero_class = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'luck': 0,'level' : 0}
-    hero = hero_class
-    hero['name'] = 'Kyrnnlord'
-    hero['level'] = 4
-    hero['HP'] = 200
-    hero['HP_max'] = 200
-    hero['MP'] = 100
-    hero['MP_max']  = 100
-    hero['luck'] = 2
+    hero1 = hero_class
+    hero1['name'] = 'Kyrnnlord'
+    hero1['level'] = 4
+    hero1['HP'] = 200
+    hero1['HP_max'] = 200
+    hero1['MP'] = 100
+    hero1['MP_max']  = 100
+    hero1['luck'] = 2
 
     # Hero Equiped
     equipment = {'weapon' : '', 'armor' :'' }
@@ -57,20 +57,20 @@ def battle_seq():
 
         # Hero Display
         table = Table(title='Player', title_justify='left', style='green')
-        hero_table_line = ("Name                   Level: "+ str(hero['level']))
+        hero_table_line = ("Name                   Level: "+ str(hero1['level']))
         table.add_column(hero_table_line, width = 35)
-        hero_disp_hp = (str(hero['HP'])+'/'+ str(hero['HP_max']))
-        hero_line1 = (hero['name'])
+        hero_disp_hp = (str(hero1['HP'])+'/'+ str(hero1['HP_max']))
+        hero_line1 = (hero1['name'])
 
         table.add_column("HP: " + hero_disp_hp, width = 25)
 
 
         # print HERO HPbar
         hp_bar = ""
-        if hero['HP_max'] == 0:
+        if hero1['HP_max'] == 0:
             bar_ticks = 0
         else:
-            bar_ticks = (hero['HP'] / hero['HP_max']) * 100 / 4
+            bar_ticks = (hero1['HP'] / hero1['HP_max']) * 100 / 4
         while bar_ticks > 0:
             hp_bar += "[green]█[/green]"
             bar_ticks -= 1
@@ -126,7 +126,7 @@ def battle_seq():
             l.play_sound('asset/crit.wav') 
         
         # Print the combat strings    
-        hero_combat_string = ("[green]"+hero['name']+'[/green]: ' + hero_combat_string+'\n')          
+        hero_combat_string = ("[green]"+hero1['name']+'[/green]: ' + hero_combat_string+'\n')          
         enemy_combat_string = ("[red]"+ enemy_current['name']+'[/red]: '+enemy_combat_string)
         
         table.add_row(hero_combat_string+enemy_combat_string)
@@ -156,9 +156,9 @@ def battle_seq():
             atk_value = random.randrange(0,20)
             modifier_value = 0
             hero_crit = 0
-            luckmod = random.randrange(hero['luck'], 20)
+            luckmod = random.randrange(hero1['luck'], 20)
             if luckmod >= 16:
-                modifier_value = round((atk_value*hero['luck']) * 1.1)
+                modifier_value = round((atk_value*hero1['luck']) * 1.1)
                 hero_crit = 1
             if hero_crit == 1:
                 enemy_current['HP'] -= atk_value + modifier_value
@@ -183,21 +183,21 @@ def battle_seq():
             # Enemy Turn
             #print(enemy_current['name']+' attacks you.')
             atk_value = random.randrange(0,15)
-            hero['HP'] -= atk_value
+            hero1['HP'] -= atk_value
             if endcombat == True:
                 atk_value = 0
-            if hero['HP'] <= 0:
-                hero['HP'] = 0
+            if hero1['HP'] <= 0:
+                hero1['HP'] = 0
                 enemy_combat_string = enemy_current['name']+" has killed you."
                 endcombat = True
             else:    
                 if atk_value >= 1:
-                    enemy_combat_string = "Hits " + hero['name'] +" for " + str(atk_value) +" damage."
+                    enemy_combat_string = "Hits " + hero1['name'] +" for " + str(atk_value) +" damage."
                 else:
                     if endcombat == True:
                         enemy_combat_string = "Dead."
                     else:
-                        enemy_combat_string = "misses " + hero['name'] +"."
+                        enemy_combat_string = "misses " + hero1['name'] +"."
 
         if ans == '2':
             l.spellbook()
