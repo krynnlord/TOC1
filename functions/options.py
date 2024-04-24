@@ -1,5 +1,4 @@
 import functions.gameFunctions as l
-import functions.heroVariables as hero
 import sqlite3, os
 from rich.console import Console
 from rich.theme import Theme

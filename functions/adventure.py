@@ -1,5 +1,5 @@
 from functions.gameFunctions import *
-from functions.heroVariables import *
+from functions.variables import *
 import  os
 from rich.console import Console
 from rich.theme import Theme
