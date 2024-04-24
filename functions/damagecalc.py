@@ -10,7 +10,7 @@ def diceroller(diceroll):
 	for i in range(int(diceroll[0])):
 		roll = random.randrange(1, int(diceroll[2])+1)
 		total.append(roll)
-		final = max(total)
+		final = sum(total)
 	
 	return final
 
@@ -31,7 +31,7 @@ def critroller(luck):
 ##########################
 # Main Damage Calculator #
 ##########################
-def damage_calc(luck, weapon_damage):
+def damage_calc(luck, mod, weapon_damage):
 	
 	# Base Attack Value
 	atk_value = diceroller(weapon_damage)
@@ -45,9 +45,9 @@ def damage_calc(luck, weapon_damage):
 	
 	# Result in crit or no crit
 	if success_crit == 1:
-		modifier_value = atk_value + diceroller(weapon_damage)
+		modifier_value = atk_value + mod + diceroller(weapon_damage)
 	else:
-		modifier_value = atk_value 
+		modifier_value = atk_value + mod
 
 	# return value and crit value
 	return modifier_value, success_crit 
