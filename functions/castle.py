@@ -34,6 +34,11 @@ def castle():
         ans = console.input("\n[yellow]Selection> [/yellow]")
 
         # Run Choices
+        if ans == '1':
+            hero[0].level = '2'
+            hero[0].exp = 200
+            hero[1] = chain_armor
+            hero[2] = shortsword
         if ans == '2':
             break
         
