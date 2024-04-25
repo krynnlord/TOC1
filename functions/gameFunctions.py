@@ -18,6 +18,9 @@ from functions.variables import *
 from functions.castle import * 
 from functions.inn import *
 from functions.temple import *
+from functions.provisioner import *
+from functions.stones import *
+from functions.blacksmith import *
 from cursor import *
 
 menuValue = '0'
