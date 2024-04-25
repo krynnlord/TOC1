@@ -23,9 +23,11 @@ def critroller(luck):
 	roll = random.randrange((1 + luck), 21)
 
 	if roll == 20:
-		crit = 1
+		crit = 1 # Critical Strike
+	elif roll == 1:
+		crit = 2 # Miss
 	else:
-		crit = 0
+		crit = 0 # Normal Strike
 	return crit
 
 ##########################
@@ -46,6 +48,8 @@ def damage_calc(luck, mod, weapon_damage):
 	# Result in crit or no crit
 	if success_crit == 1:
 		modifier_value = atk_value + mod + diceroller(weapon_damage)
+	elif success_crit == 2:
+		modifier_value = 0
 	else:
 		modifier_value = atk_value + mod
 

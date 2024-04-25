@@ -1,19 +1,19 @@
 from functions.classes import *
 
-###################
-# Hero ############
-###################
+#########################################
+# Hero ##################################
+#########################################
 hero_player = player('Krynnlord', 100, 100, 0, 0, 0, 0, 1, 2, 0, 1)
 
-###################
-# Items ###########
-###################
+#########################################
+# Items #################################
+#########################################
 potion = item("Potion of Healing", "potion", 500, 1, "") # 2d4 + 2 of healing, takes an action
 
 hero_items = [potion]
-###################
-# Spells ##########
-###################
+#########################################
+# Spells ################################
+#########################################
 # Circle 1
 heal = spell("Heal", "Heals for a small amount", 3, 1, 15, 1, 1)
 cure = spell("Cure", "Heals for a small amount", 0, 0, 15, 1, 2)
@@ -34,9 +34,9 @@ immolation = spell("Immolation", "Heals for a small amount", 0, 0, 15, 3, 12)
 
 hero_spells = [heal, cure, create_food, magic_missle, greater_heal, barrier, escape, fireball, regeneration, holy_ground, double, immolation]
 
-###################
-# Weapons #########
-###################
+#########################################
+# Weapons ###############################
+#########################################
 # No Weapon
 hands = weapon("Hands", "blunt", 0, "1d2","")
 
@@ -56,9 +56,9 @@ greatsword = weapon("Great Sword", "slashing", 5000, "2d6", "")
 
 hero_weapons = hands
 
-###################
-# Armor ###########
-###################
+#########################################
+# Armor #################################
+#########################################
 # No Armor
 tunic = armor("Hands", "blunt", 0, 1,"")
 
@@ -76,4 +76,14 @@ plate_armor = armor("Plate Armor", "Heavy", 3000, 18, "")
 
 hero_armor = leather_armor
 
+#########################################
+# Monsters ##############################
+#########################################
+zombie = monster("Zombie",22,22,0,0,0,0,1,0,8)
+skeleton = monster("Skeleton",13,13,0,0,0,0,1,0,13)
+giant_bat = monster("Giant Bat",22,22,0,0,0,0,1,0,13)
+giant_boar = monster("Giant Boar",42,42,0,0,0,0,1,0,12)
+
+
+# Create Final Hero
 hero = [hero_player, hero_armor, hero_weapons, hero_items, hero_spells]
