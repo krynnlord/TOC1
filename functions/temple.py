@@ -1,16 +1,15 @@
 from functions.gameFunctions import *
-import functions.gameFunctions as l
 from functions.variables import *
 import  os
 from rich.console import Console
 from rich.theme import Theme
 
-def adventuremenu():
+def temple():
     
     while True:
         os.system('cls')
         ans = ''
-        filetitle = 'asset/village.dat'
+        filetitle = 'asset/temple.dat'
         data = ''
         custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
         console = Console(theme=custom_theme)
@@ -28,23 +27,13 @@ def adventuremenu():
         console.print("\n")
         
         # Print Choices
-        console.print("([red]1[/red]) The Circle of Stones")
-        console.print("([red]2[/red]) The Castle")
-        console.print("([red]3[/red]) The Temple")
-        console.print("([red]4[/red]) The Blacksmith")
-        console.print("([red]5[/red]) The Provisioner")
-        console.print("([red]6[/red]) The Inn")
-        console.print("([red]7[/red]) Quit")
+        console.print("([red]1[/red]) Pray")
+        console.print("([red]2[/red]) Memorize Spells")
+        console.print("([red]3[/red]) Back")
 
         ans = console.input("\n[yellow]Selection> [/yellow]")
 
         # Run Choices
-        if ans == '2':
-            l.castle()
-        elif ans == '6':
-            l.inn()
-        elif ans == '3':
-            l.temple()        
-        elif ans == '7':
+        if ans == '3':
             break
         

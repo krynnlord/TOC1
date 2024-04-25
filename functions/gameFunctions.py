@@ -14,7 +14,10 @@ from functions.spellfunctions import *
 from functions.damagecalc import *
 from functions.levelup import *
 from functions.adventure import *
-from functions.variables import * 
+from functions.variables import *
+from functions.castle import * 
+from functions.inn import *
+from functions.temple import *
 from cursor import *
 
 menuValue = '0'
