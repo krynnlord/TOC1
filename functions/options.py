@@ -51,11 +51,13 @@ def gameoptions():
             if result_music[0] == 1:
                 cur.execute("update options set value = 0 where id = 1")
                 con.commit()
-                l.music_toggle()
+                l.midi_toggle()
+                # l.music_toggle()
             else:
                 cur.execute("update options set value = 1 where id = 1")
                 con.commit()
-                l.play_music('asset/title.mp3',0.3)
+                l.play_midi('asset/music/01.mid',1)
+                # l.play_music('asset/title.mp3',0.3)
 
         elif ans == '3':
             l.gameinfo()

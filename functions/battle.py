@@ -46,7 +46,7 @@ def battle_seq():
     # Set Sounds *** 0-MISS 1-HIT 2-KILL 3-CRIT 4-NONE
     hitmiss = 4
     hitmiss_e = 4
-    l.play_music("asset/battle.mp3",.1)
+    l.play_midi("asset/music/06.mid",.5)
 
     # Battle Loop
 
@@ -138,7 +138,7 @@ def battle_seq():
             console.print("ACTIONS", style="bold underline")        
             console.print("1) :door: Exit Combat")
             ans = input('\nCommand > ')
-            l.play_music('asset/title.mp3',0.3)
+            l.play_midi("asset/music/01.mid",1)
             break
         else:
             #console.print('\n')

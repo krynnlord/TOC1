@@ -6,7 +6,7 @@ import functions.gameFunctions as l
 
 def r_battle_seq():
     custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
-    console = Console(theme=custom_theme)
+    console = Console(theme=custom_theme, highlight=None)
 
     # Define Hero
     hero_class = {'name' : '', 'HP' : 0, 'HP_max': 0, 'MP' : 0, 'MP_max' : 0, 'luck': 0,'level' : 0}
@@ -46,7 +46,7 @@ def r_battle_seq():
     # Set Sounds *** 0-MISS 1-HIT 2-KILL 3-CRIT 4-NONE
     hitmiss = 4
     hitmiss_e = 4
-    l.play_music("asset/battle.mp3",.1)
+    l.play_midi("asset/music/06.mid",.5)
 
     # Battle Loop
     while True:
@@ -61,19 +61,16 @@ def r_battle_seq():
         console.print("Level: "+ str(hero1['level']), end="   ")
         console.print("Weapon: " + hero_equip['weapon'], end="   ")
         console.print("Armor: " + hero_equip['armor'])
-        console.print("HP: " + str(hero1['HP'])+'/'+ str(hero1['HP_max']))
 
-        # print HERO HPbar
-        hp_bar = ""
-        if hero1['HP_max'] == 0:
-            bar_ticks = 0
+        hppercent = 100 * round(hero1['HP']) / round(hero1['HP_max'])
+        if hppercent >= 75:
+            console.print("[green]" + str(hppercent) + '%[/green]',end="   ")
+        elif hppercent < 75 and hppercent > 40:
+            console.print("[yellow]" + str(hppercent) + '%[/yellow]',end="   ")
         else:
-            bar_ticks = (hero1['HP'] / hero1['HP_max']) * 100 / 4
-        while bar_ticks > 0:
-            hp_bar += "[green]█[/green]"
-            bar_ticks -= 1
-        hero_line2 = (hp_bar)
-        console.print(hero_line2,end="\n\n")
+            console.print("[red]" + str(hppercent) + '%[/red]',end="   ")
+        console.print("HP: " + str(hero1['HP'])+'/'+ str(hero1['HP_max']))
+        console.print("\n")
         
         # Enemy Display
         console.print("Enemy")
@@ -81,20 +78,17 @@ def r_battle_seq():
             console.print("-", end="")
         console.print("\nName: " + enemy_current['name'], end="    ")
         console.print("Level: "+ str(enemy_current['level']), end="\n")
-        console.print("HP: " + str(enemy_current['HP'])+'/'+ str(enemy_current['HP_max']))
-
-        # print Enemy HPbar
-        hp_bar = ""
-        if enemy_current['HP_max'] == 0:
-            bar_ticks = 0
-        else:
-            bar_ticks = (enemy_current['HP'] / enemy_current['HP_max']) * 100 / 4
-        while bar_ticks > 0:
-            hp_bar += "[green]█[/green]"
-            bar_ticks -= 1
-        enemy_line2 = (hp_bar)
-        console.print(enemy_line2,end="\n\n")
         
+        hppercent_e = 100 * round(enemy_current['HP']) / round(enemy_current['HP_max'])
+        if hppercent_e >= 75:
+            console.print("[green]" + str(hppercent_e) + '%[/green]',end="   ")
+        elif hppercent_e < 75 and hppercent_e > 40:
+            console.print("[yellow]" + str(hppercent_e) + '%[/yellow]',end="   ")
+        else:
+            console.print("[red]" + str(hppercent_e) + '%[/red]',end="   ")
+        console.print("HP: " + str(enemy_current['HP'])+'/'+ str(enemy_current['HP_max']))
+        console.print("\n")    
+
         # Attack Sounds
         if hitmiss == 1: 
             l.play_sound('asset/hit.wav')
@@ -127,7 +121,7 @@ def r_battle_seq():
             console.print("ACTIONS", style="bold underline yellow")        
             console.print("1) Exit Combat")
             ans = input('\nCommand > ')
-            l.play_music('asset/title.mp3',0.3)
+            l.play_midi("asset/music/01.mid",1)
             break
         else:
             #console.print('\n')

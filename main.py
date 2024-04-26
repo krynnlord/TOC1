@@ -17,8 +17,11 @@ result_title = cur.execute("select value from options where id = 2").fetchone() 
 
 
 if result_music[0] == 1: # Check for Music
-    musictrack = 'asset/title.mp3'
-    l.play_music(musictrack,0.3)
+    
+    musictrack = 'asset/music/01.mid'
+    l.play_midi(musictrack,1)
+    # musictrack = 'asset/title.mp3'
+    # l.play_music(musictrack,0.3)
 
 if result_title[0] == 0: # Check for Intro
     l.intro()
