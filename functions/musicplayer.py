@@ -13,7 +13,7 @@ def play_midi(midifile,vol):
     pygame.mixer.init(44100,-16,2,1024)
     pygame.mixer.music.set_volume(vol)
     pygame.mixer.music.load(midifile)
-    pygame.mixer.music.play()
+    pygame.mixer.music.play(-1)
 
 def midi_toggle():
     if pygame.mixer.music.get_busy():

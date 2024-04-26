@@ -20,8 +20,6 @@ if result_music[0] == 1: # Check for Music
     
     musictrack = 'asset/music/01.mid'
     l.play_midi(musictrack,1)
-    # musictrack = 'asset/title.mp3'
-    # l.play_music(musictrack,0.3)
 
 if result_title[0] == 0: # Check for Intro
     l.intro()
@@ -46,7 +44,6 @@ while True:
     ans = console.input("\n[yellow]Selection> [/yellow]")
 
     # Run Choices
- 
     if ans == '2':
         l.createhero()
     elif ans == '1':
