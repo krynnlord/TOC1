@@ -52,8 +52,10 @@ while True:
         l.gameoptions()
     elif ans == '4':
         break
-    elif ans == 'b' or ans == 'B': # Test out battle simulation
+    elif ans == 'b': # Test out new battle simulation
         l.battle_seq()
+    elif ans == 'B': # Test out retro battle simulation
+        l.r_battle_seq()
 
 
 ### MAIN CODE ###
