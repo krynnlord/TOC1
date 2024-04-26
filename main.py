@@ -33,7 +33,7 @@ while True:
     filetitle = 'asset/title.dat'
     data = ''
     custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
-    console = Console(theme=custom_theme)
+    console = Console(theme=custom_theme, highlight=None)
     console.print("[red]"+l.loadart(filetitle, data)+"[/red]")
     console.print("                          Chapter I: The Shimmering Gate")
     console.print('')

@@ -11,7 +11,7 @@ def gameoptions():
         filetitle = 'asset/options.dat'
         data = ''
         custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
-        console = Console(theme=custom_theme)
+        console = Console(theme=custom_theme, highlight=None)
         console.print("[yellow]"+l.loadart(filetitle, data)+"[/yellow]\n\n")
 
         # Read Game Options from database
@@ -33,7 +33,8 @@ def gameoptions():
             console.print("([red]2[/red]) Play Music (Currently: Off)")
 
         console.print("([red]3[/red]) Game Information")
-        console.print("([red]4[/red]) Return")
+        console.print("([red]4[/red]) Music Player")
+        console.print("([red]5[/red]) Return")
 
         ans = console.input("\n[yellow]Selection> [/yellow]")
 
@@ -62,7 +63,9 @@ def gameoptions():
         elif ans == '3':
             l.gameinfo()
         
-        
         elif ans == '4':
+            l.music()
+        
+        elif ans == '5':
             break
     

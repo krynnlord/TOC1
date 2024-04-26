@@ -4,7 +4,7 @@ from rich.theme import Theme
 from functions.variables import *
 
 custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
-console = Console(theme=custom_theme)
+console = Console(theme=custom_theme, highlight=None)
 
 def spellcast(hero_spells):
 

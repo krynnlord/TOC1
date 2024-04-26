@@ -10,6 +10,7 @@ from functions.inventory import *
 from functions.spellbook import *
 from functions.intro import *
 from functions.options import *
+from functions.music import *
 from functions.gameinfo import *
 from functions.spellfunctions import *
 from functions.damagecalc import *

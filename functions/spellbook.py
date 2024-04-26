@@ -6,7 +6,7 @@ from rich.progress import *
 
 def spellbook():
     custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
-    console = Console(theme=custom_theme)
+    console = Console(theme=custom_theme, highlight=None)
 
     os.system("cls")
 

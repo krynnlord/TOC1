@@ -9,7 +9,7 @@ def gameinfo():
     os.system("cls")
     data = ''
     custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
-    console = Console(theme=custom_theme)
+    console = Console(theme=custom_theme, highlight=None)
     filetitle = 'asset/gameinfo.dat'
     console.print("[yellow]"+l.loadart(filetitle, data)+"[/yellow]\n\n")
     
