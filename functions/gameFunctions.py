@@ -8,6 +8,7 @@ from functions.battle import *
 from functions.retro_battle import *
 from functions.inventory import *
 from functions.spellbook import *
+from functions.heroinformation import hero_status_bar
 from functions.intro import *
 from functions.options import *
 from functions.music import *
