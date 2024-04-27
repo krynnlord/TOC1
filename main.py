@@ -19,7 +19,7 @@ result_title = cur.execute("select value from options where id = 2").fetchone() 
 if result_music[0] == 1: # Check for Music
     music_selected = f'{result_musictrack[0]:02d}' # Convert to 2 digits if 1
     musictrack = 'asset/music/'+str(music_selected)+'.mid'
-    l.play_midi(musictrack,1) # play Music 
+    l.play_midi(musictrack,.2) # play Music 
 
 if result_title[0] == 1: # Check for Intro
     l.intro()
@@ -28,7 +28,7 @@ if result_title[0] == 1: # Check for Intro
 while True:
     os.system('cls')
     ans = ''
-    filetitle = 'asset/title.dat'
+    filetitle = 'asset/art/title.dat'
     data = ''
     custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
     console = Console(theme=custom_theme, highlight=None)

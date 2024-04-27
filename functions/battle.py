@@ -109,21 +109,21 @@ def battle_seq():
         table = Table(title ='Battle Log:', style="white", title_justify="left", width=75)
         table.add_column("[yellow]Combat[/yellow]")
         if hitmiss == 1: 
-            l.play_sound('asset/hit.wav')
+            l.play_sound('asset/sounds/hit.wav')
         if hitmiss == 0:
-            l.play_sound('asset/miss.wav')
+            l.play_sound('asset/sounds/miss.wav')
         if hitmiss == 2:
-            l.play_sound('asset/kill.wav')
+            l.play_sound('asset/sounds/kill.wav')
         if hitmiss == 3:
-            l.play_sound('asset/crit.wav')       
+            l.play_sound('asset/sounds/crit.wav')       
         if hitmiss_e == 1:
-            l.play_sound('asset/hit.wav')
+            l.play_sound('asset/sounds/hit.wav')
         if hitmiss_e == 2:
-            l.play_sound('asset/kill.wav')
+            l.play_sound('asset/sounds/kill.wav')
         if hitmiss_e == 0:
-            l.play_sound('asset/miss.wav')
+            l.play_sound('asset/sounds/miss.wav')
         if hitmiss_e == 3:
-            l.play_sound('asset/crit.wav') 
+            l.play_sound('asset/sounds/crit.wav') 
         
         # Print the combat strings    
         hero_combat_string = ("[green]"+hero1['name']+'[/green]: ' + hero_combat_string+'\n')          

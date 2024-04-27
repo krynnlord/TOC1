@@ -9,7 +9,7 @@ def temple():
     while True:
         os.system('cls')
         ans = ''
-        filetitle = 'asset/temple.dat'
+        filetitle = 'asset/art/temple.dat'
         data = ''
         custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
         console = Console(theme=custom_theme, highlight=None)

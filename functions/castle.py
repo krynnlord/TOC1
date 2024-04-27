@@ -10,7 +10,7 @@ def castle():
     while True:
         os.system('cls')
         ans = ''
-        filetitle = 'asset/castle.dat'
+        filetitle = 'asset/art/castle.dat'
         data = ''
         custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
         console = Console(theme=custom_theme, highlight=None)

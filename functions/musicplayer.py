@@ -10,7 +10,7 @@ def play_music(mp3File,vol):
     channel.set_volume(vol)
 
 def play_midi(midifile,vol):
-    pygame.mixer.init(44100,-16,2,1024)
+    pygame.mixer.init(44100,-16,1,1024)
     pygame.mixer.music.set_volume(vol)
     pygame.mixer.music.load(midifile)
     pygame.mixer.music.play(-1)
@@ -41,5 +41,5 @@ def play_sound(mp3File):
     pygame.mixer.init()
     sound = pygame.mixer.Sound(mp3File)
     channel = pygame.mixer.Channel(1)
-    channel.play(sound)
-    channel.set_volume(1)    
+    channel.set_volume(1)
+    channel.play(sound)    

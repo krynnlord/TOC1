@@ -12,7 +12,7 @@ def intro():
     time.sleep(2.2) # pause for Dramatic Musical Intro
 
     # Logo Display
-    filetitle = 'asset/title.dat'
+    filetitle = 'asset/art/title.dat'
     data = ''
     os.system('cls')
     print(f"{l.ColorStyle.RED}"+l.loadart(filetitle, data)+f"{l.ColorStyle.RESET}")

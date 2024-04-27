@@ -10,7 +10,7 @@ def provisioner():
     while True:
         os.system('cls')
         ans = ''
-        filetitle = 'asset/provisions.dat'
+        filetitle = 'asset/art/provisions.dat'
         data = ''
         custom_theme = Theme({"normal": "white", "green": "green","red": "red", "yellow": "yellow"})
         console = Console(theme=custom_theme, highlight=None)

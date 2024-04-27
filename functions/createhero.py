@@ -3,7 +3,7 @@ import functions.gameFunctions as l
 
 def createhero():
     os.system('cls')
-    filetitle = 'asset/createhero.dat'
+    filetitle = 'asset/art/createhero.dat'
     data = ''
     print(f"{l.ColorStyle.YELLOW}"+l.loadart(filetitle, data)+f"{l.ColorStyle.RESET}")
     print("\nCreating a new game. Please enter a name for your hero.")
