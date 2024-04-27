@@ -17,5 +17,6 @@ def gameinfo():
     console.print("[yellow]Copyright:[/yellow] "+l.GameDescInfo["Copyright"])
     console.print("[yellow]   Author:[/yellow] "+str(l.GameDescInfo["Author"]))
     console.print("[yellow]  Version:[/yellow] "+str(l.GameDescInfo["GameVersion"]))
+    console.print("[yellow]    Music:[/yellow] Alkakrab @ https://alkakrab.itch.io/")
 
     console.input('\n[yellow]Press any key to return...[/yellow]')

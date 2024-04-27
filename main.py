@@ -18,8 +18,8 @@ result_title = cur.execute("select value from options where id = 2").fetchone() 
 
 if result_music[0] == 1: # Check for Music
     music_selected = f'{result_musictrack[0]:02d}' # Convert to 2 digits if 1
-    musictrack = 'asset/music/'+str(music_selected)+'.mid'
-    l.play_midi(musictrack,1) # play Music 
+    musictrack = 'asset/music/'+str(music_selected)+'.ogg'
+    l.play_music(musictrack) # play Music 
 
 if result_title[0] == 1: # Check for Intro
     l.intro()

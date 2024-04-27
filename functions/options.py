@@ -17,8 +17,9 @@ def gameoptions():
         # Read Game Options from database
         con = sqlite3.connect('data.db')
         cur = con.cursor()
-        result_music = cur.execute("select value from options where id = 1").fetchone() # 0 music is Off 1 is on
-        result_title = cur.execute("select value from options where id = 2").fetchone() # 0 is show title 1 is skip
+        result_music = cur.execute("select value from options where id = 1").fetchone() 
+        result_title = cur.execute("select value from options where id = 2").fetchone()
+        result_battle = cur.execute("select value from options where id = 4").fetchone() 
         
 
         # Print Choices
@@ -31,10 +32,14 @@ def gameoptions():
             console.print("([red]2[/red]) Play Music (Currently: [green]On[/green])")
         else:    
             console.print("([red]2[/red]) Play Music (Currently: [red]Off[/red])")
-
-        console.print("([red]3[/red]) Game Information")
-        console.print("([red]4[/red]) Music Player")
-        console.print("([red]5[/red]) Return")
+        
+        if result_battle[0] == 1:            
+            console.print("([red]3[/red]) Modern Battle System (Currently: [green]On[/green])")
+        else:    
+            console.print("([red]3[/red]) Modern Battle System (Currently: [red]Off[/red])")
+        console.print("([red]4[/red]) Game Information")
+        console.print("([red]5[/red]) Music Player")
+        console.print("([red]6[/red]) Return")
 
         ans = console.input("\n[yellow]Selection> [/yellow]")
 
@@ -52,17 +57,30 @@ def gameoptions():
             if result_music[0] == 1:
                 cur.execute("update options set value = 0 where id = 1")
                 con.commit()
-                l.midi_toggle()
+                l.music_toggle()
             else:
                 cur.execute("update options set value = 1 where id = 1")
                 con.commit()
-                l.play_midi('asset/music/01.mid',1)
-        elif ans == '3':
-            l.gameinfo()
+                result_musictrack = cur.execute("select value from options where id = 3").fetchone()
+                music_selected = f'{result_musictrack[0]:02d}' # Convert to 2 digits if 1
+                musictrack = 'asset/music/'+str(music_selected)+'.ogg'
+                l.play_music(musictrack)
+        
+        elif ans == '3': # Toggle Battle Version
+            
+            if result_battle[0] == 1:
+                cur.execute("update options set value = 0 where id = 4")
+                con.commit()
+            else:
+                cur.execute("update options set value = 1 where id = 4")
+                con.commit()                
         
         elif ans == '4':
-            l.music()
+            l.gameinfo()
         
         elif ans == '5':
+            l.music()
+        
+        elif ans == '6':
             break
     
