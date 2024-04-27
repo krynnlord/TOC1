@@ -23,6 +23,7 @@ from functions.temple import *
 from functions.provisioner import *
 from functions.stones import *
 from functions.blacksmith import *
+from functions.score import *
 from cursor import *
 
 menuValue = '0'

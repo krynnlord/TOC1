@@ -60,7 +60,7 @@ hero_weapons = hands
 # Armor #################################
 #########################################
 # No Armor
-tunic = armor("Hands", "blunt", 0, 1,"")
+tunic = armor("Tunic", "Light", 0, 1,"")
 
 # Light
 cloth_armor = armor("Cloth Armor", "Light", 50, 5, "")
@@ -74,7 +74,7 @@ scale_armor = armor("Scale Armor", "Medium", 600, 14, "")
 splint_armor = armor("Splint Armor", "Heavy", 2000, 17, "")
 plate_armor = armor("Plate Armor", "Heavy", 3000, 18, "")
 
-hero_armor = leather_armor
+hero_armor = tunic
 
 #########################################
 # Monsters ##############################

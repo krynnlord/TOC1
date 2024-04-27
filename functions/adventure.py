@@ -54,6 +54,8 @@ def adventuremenu():
             l.provisioner()          
         elif ans == '6':
             l.inn()
+        elif ans == 's' or ans == 'S':
+            l.display_score()    
         elif ans == '7':
             break
         
