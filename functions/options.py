@@ -22,15 +22,15 @@ def gameoptions():
         
 
         # Print Choices
-        if result_title[0] == 1:
-            console.print("([red]1[/red]) Show Intro (Currently: Off)")
+        if result_title[0] == 0:
+            console.print("([red]1[/red]) Show Intro (Currently: [red]Off[/red])")
         else:
-            console.print("([red]1[/red]) Show Intro (Currently: On)")
+            console.print("([red]1[/red]) Show Intro (Currently: [green]On[/green])")
 
         if result_music[0] == 1:            
-            console.print("([red]2[/red]) Play Music (Currently: On)")
+            console.print("([red]2[/red]) Play Music (Currently: [green]On[/green])")
         else:    
-            console.print("([red]2[/red]) Play Music (Currently: Off)")
+            console.print("([red]2[/red]) Play Music (Currently: [red]Off[/red])")
 
         console.print("([red]3[/red]) Game Information")
         console.print("([red]4[/red]) Music Player")

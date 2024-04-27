@@ -13,15 +13,15 @@ from rich.theme import Theme
 con = sqlite3.connect('data.db')
 cur = con.cursor()
 result_music = cur.execute("select value from options where id = 1").fetchone() # 0 music is Off 1 is on
+result_musictrack = cur.execute("select value from options where id = 3").fetchone() # music choice
 result_title = cur.execute("select value from options where id = 2").fetchone() # 0 is show title 1 is skip
 
-
 if result_music[0] == 1: # Check for Music
-    
-    musictrack = 'asset/music/01.mid'
-    l.play_midi(musictrack,1)
+    music_selected = f'{result_musictrack[0]:02d}' # Convert to 2 digits if 1
+    musictrack = 'asset/music/'+str(music_selected)+'.mid'
+    l.play_midi(musictrack,1) # play Music 
 
-if result_title[0] == 0: # Check for Intro
+if result_title[0] == 1: # Check for Intro
     l.intro()
 
 ### Main Menu ###
