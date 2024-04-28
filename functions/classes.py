@@ -1,6 +1,6 @@
 # Player Class
 class player:
-    def __init__(self, name, hp, hp_max, luck, DEF_m, DEF_s, DEF_b, level, mod, exp, stat):
+    def __init__(self, name, hp, hp_max, luck, DEF_m, DEF_s, DEF_b, level, mod, exp, stat, gold):
         self.name = name
         self.hp = hp
         self.hp_max = hp_max
@@ -12,6 +12,7 @@ class player:
         self.mod = mod
         self.exp = exp
         self.stat = stat
+        self.gold = gold
 
 # Monster Class
 class monster:

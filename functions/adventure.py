@@ -19,16 +19,7 @@ def adventuremenu():
         console.print("[yellow]"+l.loadart(filetitle, data)+"[/yellow]\n")
 
         # Print Hero Information
-        for i in range(80):
-            console.print ("-", end="")
-        
-        console.print("\n[white]"+hero[0].name + "   Level: " + str(hero[0].level) + "   Exp: " + str(hero[0].exp)+"[/white]", end="   ")
-        console.print("[white]Armor: " + hero[1].name + "   Weapon: " + hero[2].name+"[/white]")
-        
-        for i in range(80):
-            console.print("-", end="")
-
-        console.print("\n")
+        l.hero_status_bar(hero)
         
         # Print Choices
         console.print("([red]1[/red]) The Circle of Stones")
