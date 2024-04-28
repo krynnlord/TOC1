@@ -70,6 +70,24 @@ def r_battle_seq():
         else:
             console.print("[red]" + str(hppercent) + '%[/red]',end="   ")
         console.print("HP: " + str(hero1['HP'])+'/'+ str(hero1['HP_max']))
+
+        # print HERO HPbar
+        hp_bar = ""
+        if hero1['HP_max'] == 0:
+            bar_ticks = 0
+        else:
+            bar_ticks = (hero1['HP'] / hero1['HP_max']) * 100 / 4
+        while bar_ticks > 0:
+            hp_bar += ":"
+            bar_ticks -= 1
+        hero_line2 = (hp_bar)
+        if hppercent >= 75:
+            console.print("[green]"+ hero_line2 + "[/green]")
+        elif hppercent < 75 and hppercent > 40:
+            console.print("[yellow]" + hero_line2 + "[/yellow]")
+        else:
+            console.print("[red]" + hero_line2 + "[/red]")
+        
         console.print("\n")
         
         # Enemy Display
@@ -87,8 +105,26 @@ def r_battle_seq():
         else:
             console.print("[red]" + str(hppercent_e) + '%[/red]',end="   ")
         console.print("HP: " + str(enemy_current['HP'])+'/'+ str(enemy_current['HP_max']))
-        console.print("\n")    
-
+        
+        # print Enemy HPbar
+        hp_bar = ""
+        if enemy_current['HP_max'] == 0:
+            bar_ticks = 0
+        else:
+            bar_ticks = (enemy_current['HP'] / enemy_current['HP_max']) * 100 / 4
+        while bar_ticks > 0:
+            hp_bar += ":"
+            bar_ticks -= 1
+        enemy_line2 = (hp_bar)
+        if hppercent_e >= 75:
+            console.print("[green]"+ enemy_line2 + "[/green]")
+        elif hppercent_e < 75 and hppercent_e > 40:
+            console.print("[yellow]" + enemy_line2 + "[/yellow]")
+        else:
+            console.print("[red]" + enemy_line2 + "[/red]")
+        
+        console.print("\n")
+  
         # Attack Sounds
         if hitmiss == 1: 
             l.play_sound('asset/sounds/hit.wav')
