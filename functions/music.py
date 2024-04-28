@@ -15,12 +15,12 @@ def music():
         console.print("[cyan]"+l.loadart(filetitle, data)+"[/cyan]\n\n")
   
         # Print Choices
-        console.print("[yellow]1[/yellow]) Moonlight Sonata    [yellow]7[/yellow]) Totentanz")
-        console.print("[yellow]2[/yellow]) Toccata & Fugue     [yellow]8[/yellow]) Funeral March 2")
-        console.print("[yellow]3[/yellow]) Funeral March       [yellow]9[/yellow]) Bald Mountain")
-        console.print("[yellow]4[/yellow]) Mountain King      [yellow]10[/yellow]) Spirit Lulliby")
-        console.print("[yellow]5[/yellow]) Danse Macabre      [yellow]11[/yellow]) Hungarian Dance")
-        console.print("[yellow]6[/yellow]) Danse Macabre      [yellow]12[/yellow]) Hungarian Dance")
+        console.print("[yellow]1[/yellow]) Elven Ruins         [yellow]7[/yellow]) The Iron Wall")
+        console.print("[yellow]2[/yellow]) To Oblivion         [yellow]8[/yellow]) Lullaby")
+        console.print("[yellow]3[/yellow]) Mysterious Portal   [yellow]9[/yellow]) Spiraling Descent")
+        console.print("[yellow]4[/yellow]) Cryptic Walls      [yellow]10[/yellow]) Distant Stars")
+        console.print("[yellow]5[/yellow]) Bard's Story       [yellow]11[/yellow]) Judgement")
+        console.print("[yellow]6[/yellow]) Shimmering Lights  [yellow]12[/yellow]) Ascendancy")
         console.print("\n[yellow]0[/yellow]) Back")
         ans = console.input("\n[yellow]Selection> [/yellow]")
 

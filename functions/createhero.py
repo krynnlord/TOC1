@@ -41,5 +41,4 @@ def createhero():
     
     if ans == 'n' or ans == 'N':
         l.menuValue = '0'
-        l.cursor.hide()
         return
