@@ -54,7 +54,7 @@ shortsword = weapon("Short Sword", "slashing", 1000, "1d8", "")
 longsword = weapon("Long Sword", "slashing", 1500, "1d10", "")
 greatsword = weapon("Great Sword", "slashing", 5000, "2d6", "")
 
-hero_weapons = hands
+hero_weapon = hands
 
 #########################################
 # Armor #################################
@@ -86,4 +86,4 @@ giant_boar = monster("Giant Boar",42,42,0,0,0,0,1,0,12)
 
 
 # Create Final Hero
-hero = [hero_player, hero_armor, hero_weapons, hero_items, hero_spells]
+hero = [hero_player, hero_armor, hero_weapon, hero_items, hero_spells]

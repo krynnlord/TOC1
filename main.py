@@ -2,7 +2,9 @@
 # (C)opyright 2024 RLM Productions
 
 import functions.gameFunctions as l
-import sqlite3, os
+from functions.variables import *
+import sqlite3, os, time
+import pickle
 from rich.console import Console
 from rich.theme import Theme
 
@@ -60,10 +62,8 @@ while True:
     elif ans == 'B': # Test out retro battle simulation
         l.r_battle_seq()
 
-
-### MAIN CODE ###
-
-
 ### EXIT CODE ###
+#close DB
 con.close()
+
 os.system('cls')
